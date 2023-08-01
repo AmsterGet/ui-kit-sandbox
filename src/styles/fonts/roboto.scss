@@ -1,0 +1,28 @@
+@import '../variables/typography';
+
+@font-face {
+  font-family: Roboto;
+  font-weight: $fw-regular;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto Regular'), local('Roboto-Regular'),
+  url('/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: $fw-medium;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+  url('/fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Roboto;
+  font-weight: $fw-bold;
+  font-display: swap;
+  font-style: normal;
+  src: local('Roboto-Bold'), local('Roboto-Bold'),
+  url('/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+}

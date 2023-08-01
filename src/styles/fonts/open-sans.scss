@@ -1,0 +1,28 @@
+@import '../variables/typography';
+
+@font-face {
+  font-family: OpenSans;
+  font-weight: $fw-light;
+  font-display: swap;
+  font-style: normal;
+  src: local('Open Sans Light'), local('OpenSans-Light'),
+  url('/fonts/OpenSans/OpenSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OpenSans;
+  font-weight: $fw-regular;
+  font-display: swap;
+  font-style: normal;
+  src: local('Open Sans Regular'), local('OpenSans-Regular'),
+  url('/fonts/OpenSans/OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: OpenSans;
+  font-weight: $fw-semi-bold;
+  font-display: swap;
+  font-style: normal;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'),
+  url('/fonts/OpenSans/OpenSans-Semibold.ttf') format('truetype');
+}
