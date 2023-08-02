@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import '../../styles/themes/index.scss';
 
 type ThemeKey = 'light' | 'dark' | string;
 

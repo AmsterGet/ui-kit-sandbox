@@ -1,3 +1,8 @@
 .rp-ui-kit-theme-dark {
+  --rp-ui-kit-color-primary: var(--darkmode-topaz-main);
+  --rp-ui-kit-color-primary-hover: var(--darkmode-topaz-hover);
+  --rp-ui-kit-color-primary-focused: var(--darkmode-topaz-focused);
+  --rp-ui-kit-color-primary-pressed: var(--darkmode-topaz-pressed);
 
+  --rp-ui-kit-color-text: var(--almost-black);
 }
