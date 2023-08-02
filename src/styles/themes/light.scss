@@ -1,8 +1,16 @@
 .rp-ui-kit-theme-light {
-  --rp-ui-kit-color-primary: var(--topaz-2);
-  --rp-ui-kit-color-primary-hover: var(--topaz-hover);
-  --rp-ui-kit-color-primary-focused: var(--topaz-focused);
-  --rp-ui-kit-color-primary-pressed: var(--topaz-pressed);
+  --rp-ui-kit-color-primary: var(--rp-ui-kit-topaz);
+  --rp-ui-kit-color-primary-hover: var(--rp-ui-kit-topaz-hover);
+  --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-topaz-focused);
+  --rp-ui-kit-color-primary-pressed: var(--rp-ui-kit-topaz-pressed);
+  --rp-ui-kit-color-primary-text: var(--rp-ui-kit-topaz);
 
-  --rp-ui-kit-color-text: var(--almost-black);
+  --rp-ui-kit-color-error: var(--rp-ui-kit-error);
+  --rp-ui-kit-color-error-hover: var(--rp-ui-kit-error-hover);
+  --rp-ui-kit-color-error-pressed: var(--rp-ui-kit-error-pressed);
+  --rp-ui-kit-color-error-focused: var(--rp-ui-kit-error-focused);
+
+  --rp-ui-kit-color-button-ghost-text: var(--rp-ui-kit-almost-black);
+
+  --rp-ui-kit-opacity-default: 30%;
 }

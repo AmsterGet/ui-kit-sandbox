@@ -6,8 +6,7 @@ import styles from './button.module.scss';
 const cx = classNames.bind(styles);
 
 type IconPlace = 'start' | 'end';
-// dark variants and others should be controlled by theme
-type ButtonVariant = 'topaz' | 'ghost' | 'danger' | 'text' | 'dark-topaz' | 'dark-ghost' | 'dark-text';
+type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
 
 interface ButtonProps {
     children: ReactNode;
@@ -16,7 +15,7 @@ interface ButtonProps {
     dataAutomationId: string;
     wide: boolean;
     disabled: boolean;
-    type: 'submit' | 'reset' | 'button' | undefined ; // TODO: Change to button type
+    type: Pick<HTMLButtonElement, 'type'>;
     onClick: () => void; // TODO: Change to button on click
     form: string | undefined;
     title: string;
@@ -25,7 +24,7 @@ interface ButtonProps {
 }
 
 export const Button: FC<ButtonProps> = forwardRef(({
-   variant = 'topaz',
+   variant = 'primary',
    icon,
    iconPlace = 'start',
    wide = false,
@@ -37,13 +36,14 @@ export const Button: FC<ButtonProps> = forwardRef(({
    title,
    className,
    dataAutomationId,
+  ...rest
 }, ref: ForwardedRef<HTMLButtonElement>): ReactElement => {
     const classes = cx('button', variant, className, {
         disabled,
         wide,
     });
 
-    const buttonIcon = (variant === 'text' || variant === 'dark-text') && icon;
+    const buttonIcon = (variant === 'text') && icon;
 
     return (
         <button
@@ -55,6 +55,7 @@ export const Button: FC<ButtonProps> = forwardRef(({
             form={form}
             title={title}
             data-automation-id={dataAutomationId}
+            {...rest}
         >
             {buttonIcon && (
                 <i className={cx('icon', {
