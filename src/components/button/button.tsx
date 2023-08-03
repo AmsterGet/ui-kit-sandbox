@@ -9,18 +9,18 @@ type IconPlace = 'start' | 'end';
 type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
 
 interface ButtonProps {
-    children: ReactNode;
-    icon: string;
-    iconPlace: IconPlace;
-    dataAutomationId: string;
-    wide: boolean;
-    disabled: boolean;
-    type: Pick<HTMLButtonElement, 'type'>;
-    onClick: () => void; // TODO: Change to button on click
-    form: string | undefined;
-    title: string;
-    className: string,
-    variant: ButtonVariant,
+    children?: ReactNode;
+    icon?: string;
+    iconPlace?: IconPlace;
+    dataAutomationId?: string;
+    wide?: boolean;
+    disabled?: boolean;
+    type?: Pick<HTMLButtonElement, 'type'>;
+    onClick?: () => void; // TODO: Change to button on click
+    form?: string | undefined;
+    title?: string;
+    className?: string,
+    variant?: ButtonVariant,
 }
 
 export const Button: FC<ButtonProps> = forwardRef(({

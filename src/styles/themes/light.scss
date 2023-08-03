@@ -1,4 +1,4 @@
-.rp-ui-kit-theme-light {
+@mixin light-theme {
   --rp-ui-kit-color-primary: var(--rp-ui-kit-topaz);
   --rp-ui-kit-color-primary-hover: var(--rp-ui-kit-topaz-hover);
   --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-topaz-focused);
@@ -13,4 +13,8 @@
   --rp-ui-kit-color-button-ghost-text: var(--rp-ui-kit-almost-black);
 
   --rp-ui-kit-opacity-default: 30%;
+}
+
+.rp-ui-kit-theme-light {
+  @include light-theme;
 }

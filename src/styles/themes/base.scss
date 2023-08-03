@@ -1,4 +1,6 @@
-/* Common global CSS properties that are used regardless of theme choice */
+/* Common global CSS properties */
+
+@import "light";
 
 :root {
   /* colors */
@@ -68,4 +70,7 @@
   /* fonts */
   --rp-ui-kit-font-family-base: Roboto, Arial, Helvetica, sans-serif;
   --rp-ui-kit-font-family-heading: OpenSans, Segoe UI, Tahoma, sans-serif;
+
+  // Default theme if the theme provider doesn't used
+  @include light-theme;
 }
