@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button } from './Button';
+import { Button } from './button';
 import { ThemeProvider } from '../themeProvider';
 
 // TODO: add the controls https://storybook.js.org/docs/react/essentials/controls

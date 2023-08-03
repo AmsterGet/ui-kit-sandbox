@@ -15,7 +15,7 @@ interface ButtonProps {
     dataAutomationId?: string;
     wide?: boolean;
     disabled?: boolean;
-    type?: Pick<HTMLButtonElement, 'type'>;
+    type?: 'submit' | 'reset' | 'button' | undefined;
     onClick?: () => void; // TODO: Change to button on click
     form?: string | undefined;
     title?: string;

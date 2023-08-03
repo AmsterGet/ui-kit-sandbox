@@ -18,12 +18,7 @@
   ],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.umd.cjs"
-    }
-  },
+  "types": "./dist/index.d.ts",
   "peerDependencies": {
     "react": "17.x-18.x",
     "react-dom": "17.x-18.x"
