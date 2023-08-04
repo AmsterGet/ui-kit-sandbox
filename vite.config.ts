@@ -20,6 +20,11 @@ export default defineConfig((configEnv) => ({
       include: ['src/components/'],
     }),
   ],
+  resolve: {
+    alias: {
+      '@public': resolve(__dirname, 'public'),
+    }
+  },
   build: {
     lib: {
       entry: resolve('src', 'components'),
@@ -31,4 +36,4 @@ export default defineConfig((configEnv) => ({
       external: [...Object.keys(packageJson.peerDependencies)],
     },
   },
-}))
+}));
