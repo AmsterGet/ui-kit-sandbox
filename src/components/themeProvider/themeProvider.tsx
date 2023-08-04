@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import '../../styles/themes/index.scss';
 
 type ThemeKey = 'light' | 'dark' | string;
@@ -8,7 +8,7 @@ interface ITheme {
 }
 
 interface IThemeProviderProps {
-    children?: ReactElement;
+    children?: ReactNode;
     theme?: ThemeKey;
     customThemes?: ITheme;
 }
