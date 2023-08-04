@@ -6,7 +6,7 @@ import EsLint from 'vite-plugin-linter';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import * as packageJson from './package.json'
 
-const { EsLinter, linterPlugin } = EsLint
+const { EsLinter, linterPlugin } = EsLint;
 
 export default defineConfig((configEnv) => ({
   plugins: [
@@ -16,21 +16,17 @@ export default defineConfig((configEnv) => ({
       include: ['./src}/**/*.{ts,tsx}'],
       linters: [new EsLinter({ configEnv })],
     }),
-    dts({
-      include: ['src/components/'],
-    }),
+    dts(),
   ],
-  resolve: {
-    alias: {
-      '@public': resolve(__dirname, 'public'),
-    }
-  },
   build: {
     lib: {
-      entry: resolve('src', 'components'),
+      entry: {
+        button: resolve('src', 'components', 'button'),
+        themeProvider: resolve('src', 'components', 'themeProvider'),
+        index: resolve('src', 'components'),
+      },
       name: 'ui-kit',
-      formats: ['es', 'umd'],
-      fileName: 'index',
+      formats: ['es'],
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],

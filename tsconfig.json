@@ -23,5 +23,11 @@
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src"],
+  "exclude": [
+    "node_modules",
+    ".storybook",
+    "dist",
+    "**/*.stories.(js|jsx|ts|tsx|mdx)"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
