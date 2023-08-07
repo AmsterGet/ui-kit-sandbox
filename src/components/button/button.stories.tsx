@@ -40,11 +40,9 @@ export const Ghost: Story = {
 };
 
 export const Danger: Story = {
-  render: () => <Button variant="danger">Danget</Button>,
+  render: () => <Button variant="danger">Danger</Button>,
 };
 
 export const Text: Story = {
   render: () => <Button variant="text">Text</Button>,
 };
-
-

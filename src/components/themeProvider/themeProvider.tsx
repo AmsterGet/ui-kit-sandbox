@@ -4,35 +4,31 @@ import '../../assets/styles/themes/index.scss';
 type ThemeKey = 'light' | 'dark' | string;
 
 interface ITheme {
-    [themeKey: ThemeKey]: string;
+  [themeKey: ThemeKey]: string;
 }
 
 interface IThemeProviderProps {
-    children?: ReactNode;
-    theme?: ThemeKey;
-    customThemes?: ITheme;
+  children?: ReactNode;
+  theme?: ThemeKey;
+  customThemes?: ITheme;
 }
 
 const builtinThemes: ITheme = {
-    light: 'rp-ui-kit-theme-light',
-    dark: 'rp-ui-kit-theme-dark',
+  light: 'rp-ui-kit-theme-light',
+  dark: 'rp-ui-kit-theme-dark',
 };
 
-export const ThemeProvider = ({
+export function ThemeProvider({
   children,
   theme = 'light',
   customThemes = {},
-}: IThemeProviderProps) => {
-    const themes = {
-        ...builtinThemes,
-        ...customThemes,
-    };
+}: IThemeProviderProps) {
+  const themes = {
+    ...builtinThemes,
+    ...customThemes,
+  };
 
-    const currentThemeClassName = themes[theme] || builtinThemes.light;
+  const currentThemeClassName = themes[theme] || builtinThemes.light;
 
-    return (
-        <div className={currentThemeClassName}>
-            {children}
-        </div>
-    );
-};
+  return <div className={currentThemeClassName}>{children}</div>;
+}
