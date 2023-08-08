@@ -33,7 +33,7 @@ export const Button: FC<ButtonProps> = forwardRef(
       type = 'button',
       children,
       disabled = false,
-      onClick = () => {},
+      onClick,
       form,
       title,
       className,
