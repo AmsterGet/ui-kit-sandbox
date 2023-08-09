@@ -1,16 +1,4 @@
-@mixin checkboxContainer($color, $opacity) {
-  display: inline-flex;
-  align-items: center;
-  padding-left: 24px;
-  color: $color;
-  border-color: $color;
-  font-family: $FONT-ROBOTO-REGULAR;
-  font-size: 13px;
-  line-height: 20px;
-  .disabled {
-    @include disabled-state($opacity);
-  }
-}
+@import "../../assets/styles/variables/typography";
 
 @mixin checked-state($borderColor, $backgroundColor) {
   border-color: $borderColor;
@@ -18,11 +6,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='9' viewBox='0 0 12 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 4.25L4.5 7.25L10.5 0.75' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
-}
-
-@mixin disabled-state($opacity) {
-  opacity: $opacity;
-  pointer-events: none;
 }
 
 .input {
@@ -36,7 +19,7 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 1px solid $COLOR--e-200;
+  border: 1px solid var(--rp-ui-kit-e-200); // TODO: change to theme variable
   border-radius: 3px;
   margin-left: -24px;
   box-sizing: border-box;
@@ -48,72 +31,100 @@
 
   & a {
     text-decoration: none;
-    color: $COLOR--topaz-2;
+    color: var(--rp-ui-kit-color-primary);
   }
 
   & a:focus,
   & a:focus-visible {
     outline: none;
-    color: $COLOR--topaz-focused;
+    color: var(--rp-ui-kit-color-primary-focused);
     text-decoration: underline;
   }
 }
 
 .light {
-  @include checkboxContainer($COLOR--almost-black, 0.3);
+  display: inline-flex;
+  align-items: center;
+  padding-left: 24px;
+  color: var(--rp-ui-kit-color-button-ghost-text);  // TODO
+  border-color: var(--rp-ui-kit-color-button-ghost-text);  // TODO
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-medium;
+  font-size: 13px;
+  line-height: 20px;
+  .disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
   .input {
     &:checked + .checkbox {
-      @include checked-state($COLOR--topaz-2, $COLOR--topaz-2);
+      @include checked-state(var(--rp-ui-kit-color-primary), var(--rp-ui-kit-color-primary));
     }
     &:hover + .checkbox {
-      border-color: $COLOR--e-400;
+      border-color: var(--rp-ui-kit-e-400);  // TODO: change to theme variable
     }
     &:active:not(:disabled) + .checkbox {
-      border: 2px solid $COLOR--topaz-focused;
+      border: 2px solid var(--rp-ui-kit-color-primary-focused);
     }
     &:checked:hover + .checkbox {
-      @include checked-state($COLOR--topaz-hover-2, $COLOR--topaz-hover-2);
+      @include checked-state(var(--rp-ui-kit-color-primary-hover), var(--rp-ui-kit-color-primary-hover));
     }
     &:checked:active:not(:disabled) + .checkbox {
-      @include checked-state($COLOR--topaz-focused, $COLOR--topaz-focused);
+      @include checked-state(var(--rp-ui-kit-color-primary-focused), var(--rp-ui-kit-color-primary-focused));
     }
     &:disabled + .checkbox {
-      border-color: $COLOR--e-200;
+      border-color: var(--rp-ui-kit-e-200); // TODO: change to theme variable
     }
     &:checked:disabled + .checkbox {
-      @include checked-state($COLOR--topaz-2, $COLOR--topaz-2);
-      @include disabled-state(0.3);
+      @include checked-state(var(--rp-ui-kit-color-primary), var(--rp-ui-kit-color-primary));
+      opacity: 0.3;
+      pointer-events: none;
     }
     &:focus + .checkbox {
-      border: 2px solid $COLOR--topaz-focused;
+      border: 2px solid var(--rp-ui-kit-color-primary-focused);
     }
   }
 }
 
 .dark {
-  @include checkboxContainer($COLOR--darkmode-gray-100, 0.5);
+  display: inline-flex;
+  align-items: center;
+  padding-left: 24px;
+  color: var(--rp-ui-kit-darkmode-gray-100);  // TODO
+  border-color: var(--rp-ui-kit-darkmode-gray-100);  // TODO
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-medium;
+  font-size: 13px;
+  line-height: 20px;
+  .disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   .input {
     &:checked + .checkbox {
-      @include checked-state($COLOR--darkmode-topaz-main, $COLOR--darkmode-topaz-main);
+      @include checked-state(var(--rp-ui-kit-color-primary), var(--rp-ui-kit-color-primary));
     }
     &:hover + .checkbox {
-      border-color: $COLOR--darkmode-gray-50;
+      border-color: var(--rp-ui-kit-darkmode-gray-50); // TODO
     }
     &:active:not(:disabled) + .checkbox {
-      border: 2px solid $COLOR--darkmode-topaz-focused;
+      border: 2px solid var(--rp-ui-kit-color-primary-focused);
     }
     &:checked:hover + .checkbox {
-      @include checked-state($COLOR--darkmode-topaz-hover, $COLOR--darkmode-topaz-hover);
+      @include checked-state(var(--rp-ui-kit-color-primary-hover), var(--rp-ui-kit-color-primary-hover));
     }
     &:checked:active:not(:disabled) + .checkbox {
-      @include checked-state($COLOR--darkmode-topaz-focused, $COLOR--darkmode-topaz-focused);
+      @include checked-state(var(--rp-ui-kit-color-primary-focused), var(--rp-ui-kit-color-primary-focused));
     }
     &:disabled + .checkbox {
-      border-color: $COLOR--darkmode-gray-100;
+      border-color: var(--rp-ui-kit-darkmode-gray-100);  // TODO
     }
     &:checked:disabled + .checkbox {
-      @include checked-state($COLOR--darkmode-topaz-main, $COLOR--darkmode-topaz-main);
-      @include disabled-state(0.5);
+      @include checked-state(var(--rp-ui-kit-color-primary), var(--rp-ui-kit-color-primary));
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }
