@@ -3,16 +3,25 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from './button';
 import { ThemeProvider } from '../themeProvider';
 
-// TODO: add the controls https://storybook.js.org/docs/react/essentials/controls
-// TODO: add docs
+const DarkWrapper = ({ children }) => (
+  <div
+    style={{
+      marginTop: '20px',
+      backgroundColor: 'var(--rp-ui-kit-darkmode-bg)',
+      padding: '10px',
+    }}
+  >
+    <ThemeProvider theme="dark">{children}</ThemeProvider>
+  </div>
+);
+
 const meta: Meta<typeof Button> = {
+  title: 'Button',
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered',
   },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  // tags: ['autodocs'],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -20,29 +29,57 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  render: () => <Button>Primary</Button>,
-};
-
-export const PrimaryDisabled: Story = {
-  render: () => <Button disabled>Primary disabled</Button>,
-};
-
-export const PrimaryDarkTheme: Story = {
-  render: () => (
-    <ThemeProvider theme="dark">
-      <Button>Primary for dark theme</Button>
-    </ThemeProvider>
+  args: {
+    variant: 'primary',
+  },
+  render: (args) => (
+    <>
+      <Button {...args}>Primary</Button>
+      <DarkWrapper>
+        <Button {...args}>Primary darkmode</Button>
+      </DarkWrapper>
+    </>
   ),
 };
 
 export const Ghost: Story = {
-  render: () => <Button variant="ghost">Ghost</Button>,
+  args: {
+    variant: 'ghost',
+  },
+  render: (args) => (
+    <>
+      <Button {...args}>Ghost</Button>
+      <DarkWrapper>
+        <Button {...args}>Ghost darkmode</Button>
+      </DarkWrapper>
+    </>
+  ),
 };
 
 export const Danger: Story = {
-  render: () => <Button variant="danger">Danger</Button>,
+  args: {
+    variant: 'danger',
+  },
+  render: (args) => (
+    <>
+      <Button {...args}>Danger</Button>
+      <DarkWrapper>
+        <Button {...args}>Danger darkmode</Button>
+      </DarkWrapper>
+    </>
+  ),
 };
 
 export const Text: Story = {
-  render: () => <Button variant="text">Text</Button>,
+  args: {
+    variant: 'text',
+  },
+  render: (args) => (
+    <>
+      <Button {...args}>Text</Button>
+      <DarkWrapper>
+        <Button {...args}>Text darkmode</Button>
+      </DarkWrapper>
+    </>
+  ),
 };
