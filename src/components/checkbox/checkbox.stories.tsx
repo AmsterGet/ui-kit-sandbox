@@ -28,10 +28,18 @@ export default meta;
 
 type Story = StoryObj<typeof Checkbox>;
 
-export const Primary: Story = {
-  // args: {
-  //   variant: 'primary',
-  // },
+export const Default: Story = {
+  render: (args) => (
+    <>
+      <Checkbox {...args} />
+      <DarkWrapper>
+        <Checkbox {...args} />
+      </DarkWrapper>
+    </>
+  ),
+};
+
+export const WithChildren: Story = {
   render: (args) => (
     <>
       <Checkbox {...args}>Primary</Checkbox>

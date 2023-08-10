@@ -51,7 +51,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 
   return (
     <label
-      id="chk1-label"
+      id="rp-ui-kit-checkbox-label"
       className={cx(variant, className, {
         disabled,
       })}
@@ -70,7 +70,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         checked={value}
       />
       <span
-        aria-labelledby="chk1-label"
+        aria-labelledby="rp-ui-kit-checkbox-label"
         role="checkbox"
         aria-checked={value}
         className={cx('checkbox', {

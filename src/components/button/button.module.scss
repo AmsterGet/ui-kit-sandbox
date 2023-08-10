@@ -38,7 +38,7 @@
 .ghost {
     border: 1px solid var(--rp-ui-kit-color-primary);
     background-color: transparent;
-    color: var(--rp-ui-kit-color-button-ghost-text);
+    color: var(--rp-ui-kit-color-text);
     &:hover:not(.disabled) {
         border: 1px solid var(--rp-ui-kit-color-primary-hover);
     }

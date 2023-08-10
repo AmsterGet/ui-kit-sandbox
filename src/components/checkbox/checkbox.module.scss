@@ -19,7 +19,7 @@
   position: absolute;
   width: 16px;
   height: 16px;
-  border: 1px solid var(--rp-ui-kit-e-200); // TODO: change to theme variable
+  border: 1px solid var(--rp-ui-kit-e-200); // Default color
   border-radius: 3px;
   margin-left: -24px;
   box-sizing: border-box;
@@ -46,8 +46,8 @@
   display: inline-flex;
   align-items: center;
   padding-left: 24px;
-  color: var(--rp-ui-kit-color-button-ghost-text);  // TODO
-  border-color: var(--rp-ui-kit-color-button-ghost-text);  // TODO
+  color: var(--rp-ui-kit-color-text-2);  // TODO
+  border-color: var(--rp-ui-kit-color-text-2);  // TODO
   font-family: var(--rp-ui-kit-font-family-base);
   font-weight: $fw-medium;
   font-size: 13px;
@@ -91,8 +91,8 @@
   display: inline-flex;
   align-items: center;
   padding-left: 24px;
-  color: var(--rp-ui-kit-darkmode-gray-100);  // TODO
-  border-color: var(--rp-ui-kit-darkmode-gray-100);  // TODO
+  color: var(--rp-ui-kit-color-text-2);
+  border-color: var(--rp-ui-kit-color-text-2);
   font-family: var(--rp-ui-kit-font-family-base);
   font-weight: $fw-medium;
   font-size: 13px;

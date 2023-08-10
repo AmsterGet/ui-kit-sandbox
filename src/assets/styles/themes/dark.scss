@@ -1,9 +1,9 @@
 .rp-ui-kit-theme-dark {
-  --rp-ui-kit-color-primary: var(--rp-ui-kit-darkmode-topaz-main);
-  --rp-ui-kit-color-primary-hover: var(--rp-ui-kit-darkmode-topaz-hover);
-  --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-darkmode-topaz-focused);
-  --rp-ui-kit-color-primary-pressed: var(--rp-ui-kit-darkmode-topaz-pressed);
-  --rp-ui-kit-color-primary-text: var(--rp-ui-kit-darkmode-topaz-text);
+  --rp-ui-kit-color-primary: var(--rp-ui-kit-dark-topaz-main);
+  --rp-ui-kit-color-primary-hover: var(--rp-ui-kit-dark-topaz-hover);
+  --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-dark-topaz-focused);
+  --rp-ui-kit-color-primary-pressed: var(--rp-ui-kit-dark-topaz-pressed);
+  --rp-ui-kit-color-primary-text: var(--rp-ui-kit-dark-topaz-text);
 
   // TODO: Discuss with UX team these colors for dark theme
   --rp-ui-kit-color-error: var(--rp-ui-kit-error);
@@ -11,7 +11,8 @@
   --rp-ui-kit-color-error-pressed: var(--rp-ui-kit-error-pressed);
   --rp-ui-kit-color-error-focused: var(--rp-ui-kit-error-focused);
 
-  --rp-ui-kit-color-button-ghost-text: var(--rp-ui-kit-darkmode-gray-50);
+  --rp-ui-kit-color-text: var(--rp-ui-kit-dark-e-50);
+  --rp-ui-kit-color-text-2: var(--rp-ui-kit-dark-e-100);
 
   --rp-ui-kit-opacity-default: 50%;
 }
