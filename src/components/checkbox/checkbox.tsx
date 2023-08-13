@@ -70,11 +70,11 @@ export const Checkbox: FC<CheckboxProps> = ({
         aria-labelledby="rp-ui-kit-checkbox-label"
         role="checkbox"
         aria-checked={value}
-        className={cx('checkbox-control', {
+        className={cx('control', {
           disabled,
         })}
       />
-      {children && <span className={cx('children-container', { disabled })}>{children}</span>}
+      {children && <span className={cx('children', { disabled })}>{children}</span>}
     </label>
   );
 };

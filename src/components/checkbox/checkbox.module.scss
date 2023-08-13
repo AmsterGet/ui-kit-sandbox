@@ -31,7 +31,7 @@
   left: 0;
 }
 
-.checkbox-control {
+.control {
   position: absolute;
   width: 16px;
   height: 16px;
@@ -43,35 +43,35 @@
 }
 
 .input {
-  &:checked + .checkbox-control {
+  &:checked + .control {
     @include checked-state(var(--rp-ui-kit-color-primary));
   }
-  &:hover + .checkbox-control {
+  &:hover + .control {
     border-color: var(--rp-ui-kit-color-gray-hover);
   }
-  &:active:not(:disabled) + .checkbox-control {
+  &:active:not(:disabled) + .control {
     border: 2px solid var(--rp-ui-kit-color-primary-focused);
   }
-  &:checked:hover + .checkbox-control {
+  &:checked:hover + .control {
     @include checked-state(var(--rp-ui-kit-color-primary-hover));
   }
-  &:checked:active:not(:disabled) + .checkbox-control {
+  &:checked:active:not(:disabled) + .control {
     @include checked-state(var(--rp-ui-kit-color-primary-focused));
   }
-  &:disabled + .checkbox-control {
+  &:disabled + .control {
     border-color: var(--rp-ui-kit-color-disabled);
   }
-  &:checked:disabled + .checkbox-control {
+  &:checked:disabled + .control {
     @include checked-state(var(--rp-ui-kit-color-primary));
     opacity: var(--rp-ui-kit-opacity-default);
     pointer-events: none;
   }
-  &:focus + .checkbox-control {
+  &:focus + .control {
     border: 2px solid var(--rp-ui-kit-color-primary-focused);
   }
 }
 
-.children-container {
+.children {
   cursor: pointer;
 
   & a {
