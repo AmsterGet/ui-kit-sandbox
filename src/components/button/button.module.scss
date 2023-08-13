@@ -21,7 +21,7 @@
 .primary {
     border: 1px solid var(--rp-ui-kit-color-primary);
     background-color: var(--rp-ui-kit-color-primary);
-    color: var(--rp-ui-kit-color-bg-000);
+    color: var(--rp-ui-kit-bg-000);
     &:hover:not(.disabled) {
         border: 1px solid var(--rp-ui-kit-color-primary-hover);
         background-color: var(--rp-ui-kit-color-primary-hover);
@@ -53,7 +53,7 @@
 .danger {
     border: 1px solid var(--rp-ui-kit-color-error);
     background-color: var(--rp-ui-kit-color-error);
-    color: var(--rp-ui-kit-color-bg-000);
+    color: var(--rp-ui-kit-bg-000);
     &:hover:not(.disabled) {
         opacity: 0.9;
     }

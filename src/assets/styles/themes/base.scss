@@ -1,12 +1,12 @@
 /* Common global CSS properties */
 
-@import "../fonts/index";
+@use "../fonts/index";
 @import "light";
 
 :root {
   /* colors */
 
-  --rp-ui-kit-color-bg-000: #ffffff; // -> rp-ui-kit-color-background-000
+  --rp-ui-kit-bg-000: #ffffff; // -> rp-ui-kit-color-background-000
 
   --rp-ui-kit-error: #dc5959; // prev.red-failed-2 -> --rp-ui-kit-color-error
   --rp-ui-kit-error-hover: #f24a4a; // rp-ui-kit-color-error-hover

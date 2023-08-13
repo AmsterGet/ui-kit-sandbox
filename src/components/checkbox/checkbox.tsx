@@ -5,8 +5,6 @@ import styles from './checkbox.module.scss';
 
 const cx = classNames.bind(styles);
 
-type ThemeVariant = 'light' | 'dark'; // TODO: remove as it will be controlled using active theme
-
 interface CheckboxProps {
   value: boolean;
   children?: ReactNode;
@@ -16,10 +14,7 @@ interface CheckboxProps {
   onChange?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
-
-  variant?: ThemeVariant;
-
-  form?: string; // TODO: check if needed
+  form?: string;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -30,8 +25,8 @@ export const Checkbox: FC<CheckboxProps> = ({
   onBlur,
   className,
   value,
-  variant = 'light',
   dataAutomationId,
+  form,
 }): ReactElement => {
   const inputRef = useRef(null);
 
@@ -52,7 +47,7 @@ export const Checkbox: FC<CheckboxProps> = ({
   return (
     <label
       id="rp-ui-kit-checkbox-label"
-      className={cx(variant, className, {
+      className={cx('checkbox', className, {
         disabled,
       })}
       onFocus={onFocus}
@@ -68,12 +63,13 @@ export const Checkbox: FC<CheckboxProps> = ({
         disabled={disabled}
         onChange={onChange}
         checked={value}
+        form={form}
       />
       <span
         aria-labelledby="rp-ui-kit-checkbox-label"
         role="checkbox"
         aria-checked={value}
-        className={cx('checkbox', {
+        className={cx('checkbox-control', {
           disabled,
         })}
       />

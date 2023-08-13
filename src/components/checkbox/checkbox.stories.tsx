@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './checkbox';
 import { ThemeProvider } from '../themeProvider';
 
+// TODO: Create Storybook decorator - https://storybook.js.org/docs/react/writing-stories/decorators
 const DarkWrapper = ({ children }) => (
   <div
     style={{
