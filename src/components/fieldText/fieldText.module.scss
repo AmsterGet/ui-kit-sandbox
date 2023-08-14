@@ -19,14 +19,6 @@
   color: var(--rp-ui-kit-e-300);
 }
 
-.additional-content {
-  margin-top: 4px;
-
-  &.disabled {
-    pointer-events: none;
-  }
-}
-
 .icon-container {
   display: flex;
   justify-content: center;
@@ -139,22 +131,6 @@
   }
 }
 
-.error-text {
-  @include font-scale(s-small);
-  font-family: var(--rp-ui-kit-font-family-base);
-  font-weight: $fw-regular;
-  display: block;
-  color: var(--rp-ui-kit-error);
-}
-
-.help-text {
-  @include font-scale(s-small);
-  font-family: var(--rp-ui-kit-font-family-base);
-  font-weight: $fw-regular;
-  display: block;
-  color: var(--rp-ui-kit-dark-e-300);
-}
-
 .icon {
   display: inline-block;
   width: 16px;
@@ -178,3 +154,27 @@
     @include fill-svg(var(--rp-ui-kit-color-primary-pressed));
   }
 }
+
+.additional-content {
+  margin-top: 4px;
+
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+.text {
+  @include font-scale(s-small);
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  display: block;
+}
+
+.error-text {
+  color: var(--rp-ui-kit-error);
+}
+
+.help-text {
+  color: var(--rp-ui-kit-dark-e-300);
+}
+

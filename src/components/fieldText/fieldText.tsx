@@ -1,30 +1,34 @@
-import { FC, ChangeEventHandler, forwardRef, ForwardedRef, ReactElement, ReactNode } from 'react';
+import {
+  FC,
+  ChangeEventHandler,
+  forwardRef,
+  ForwardedRef,
+  ReactElement,
+  ReactNode,
+  HTMLAttributes,
+} from 'react';
 import classNames from 'classnames/bind';
 import { ReactComponent as CrossIcon } from '@assets/icons/cross.svg';
 import styles from './fieldText.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface FieldTextProps {
+interface FieldTextProps extends HTMLAttributes<HTMLInputElement> {
   value?: string;
   className?: string;
   error?: string;
   placeholder?: string;
-  maxLength?: number;
   disabled?: boolean;
-  onChange?: ChangeEventHandler<HTMLInputElement>; // (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  onKeyUp?: () => void;
-  onKeyDown?: () => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   touched?: boolean;
   title?: string;
   label?: string;
   helpText?: string;
-  defaultWidth: boolean;
+  defaultWidth?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
   clearable?: boolean;
+  onClear?: (prevValue?: string) => void;
   isRequired?: boolean;
   hasDoubleMessage?: boolean;
   type?: string;
@@ -37,13 +41,8 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       className,
       error,
       placeholder,
-      maxLength = 256,
       disabled = false,
       onChange,
-      onFocus,
-      onBlur,
-      onKeyUp,
-      onKeyDown,
       touched = false,
       title,
       label,
@@ -52,22 +51,21 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
       startIcon,
       endIcon,
       clearable = false,
+      onClear,
       isRequired = false,
       hasDoubleMessage = false,
       type = 'text',
+      ...rest
     },
     ref: ForwardedRef<HTMLInputElement>,
   ): ReactElement => {
     const clearInput = () => {
-      if (onChange) {
-        // TODO: fix
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        onChange('');
+      if (onClear) {
+        onClear(value);
       }
     };
 
-    const helpTextElement = <span className={cx('help-text')}>{helpText}</span>;
+    const helpTextElement = <span className={cx('text', 'help-text')}>{helpText}</span>;
 
     return (
       <>
@@ -97,13 +95,9 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
               type={type}
               className={cx('input')}
               value={value}
-              maxLength={maxLength}
               disabled={disabled}
-              onChange={disabled ? null : onChange}
-              onFocus={disabled ? null : onFocus}
-              onBlur={disabled ? null : onBlur}
-              onKeyUp={disabled ? null : onKeyUp}
-              onKeyDown={disabled ? null : onKeyDown}
+              onChange={onChange}
+              {...rest}
             />
             {placeholder && !value && (
               <span className={cx('placeholder')}>
@@ -119,7 +113,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
           )}
           {clearable && (
             <span className={cx('icon-container-end')}>
-              <i className={cx('clear-icon', { disabled })} onClick={disabled ? null : clearInput}>
+              <i className={cx('clear-icon', { disabled })} onClick={clearInput}>
                 <CrossIcon />
               </i>
             </span>
@@ -129,7 +123,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
           <div className={cx('additional-content', { disabled })}>
             {error && touched ? (
               <>
-                <span className={cx('error-text')}>{error}</span>
+                <span className={cx('text', 'error-text')}>{error}</span>
                 {hasDoubleMessage && helpTextElement}
               </>
             ) : (

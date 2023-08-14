@@ -1,20 +1,25 @@
 import classNames from 'classnames/bind';
-import { FC, ReactElement, ReactNode, useRef, KeyboardEventHandler } from 'react';
+import {
+  FC,
+  ReactElement,
+  ReactNode,
+  useRef,
+  KeyboardEventHandler,
+  ChangeEventHandler,
+  HTMLAttributes,
+} from 'react';
 import { KeyCodes } from '@constants/key-codes';
 import styles from './checkbox.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface CheckboxProps {
+interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   value: boolean;
   children?: ReactNode;
   disabled?: boolean;
   className?: string;
   dataAutomationId?: string;
-  onChange?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  form?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 // DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=2350-8764&mode=design&t=GAXsAg9jOEgkVVlq-0
@@ -22,12 +27,10 @@ export const Checkbox: FC<CheckboxProps> = ({
   children,
   disabled = false,
   onChange,
-  onFocus,
-  onBlur,
   className,
   value,
   dataAutomationId,
-  form,
+  ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -36,6 +39,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 
     if (keyCode === KeyCodes.SPACE_KEY_CODE) {
       event.preventDefault();
+      inputRef.current?.click();
       return;
     }
 
@@ -51,8 +55,6 @@ export const Checkbox: FC<CheckboxProps> = ({
       className={cx('checkbox', className, {
         disabled,
       })}
-      onFocus={onFocus}
-      onBlur={onBlur}
       data-automation-id={dataAutomationId}
     >
       <input
@@ -64,7 +66,7 @@ export const Checkbox: FC<CheckboxProps> = ({
         disabled={disabled}
         onChange={onChange}
         checked={value}
-        form={form}
+        {...rest}
       />
       <span
         aria-labelledby="rp-ui-kit-checkbox-label"

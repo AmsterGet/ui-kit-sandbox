@@ -6,6 +6,7 @@ import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import * as packageJson from './package.json';
 
+// TODO: build styles for components individually
 export default defineConfig(() => ({
   plugins: [react(), svgr(), tsConfigPaths(), dts()],
   resolve: {
@@ -25,12 +26,17 @@ export default defineConfig(() => ({
         button: resolve('src', 'components', 'button'),
         checkbox: resolve('src', 'components', 'checkbox'),
         systemMessage: resolve('src', 'components', 'systemMessage'),
+        fieldText: resolve('src', 'components', 'FieldText'),
       },
       name: 'ui-kit',
       formats: ['es'],
     },
     rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies), 'react/jsx-runtime'],
+      external: [
+        ...Object.keys(packageJson.dependencies),
+        ...Object.keys(packageJson.peerDependencies),
+        'react/jsx-runtime',
+      ],
     },
   },
 }));

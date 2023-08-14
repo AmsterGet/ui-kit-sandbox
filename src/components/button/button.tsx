@@ -1,4 +1,12 @@
-import { FC, ReactNode, ReactElement, forwardRef, ForwardedRef } from 'react';
+import {
+  FC,
+  ReactNode,
+  ReactElement,
+  forwardRef,
+  ForwardedRef,
+  HTMLAttributes,
+  MouseEventHandler,
+} from 'react';
 import classNames from 'classnames/bind';
 import styles from './button.module.scss';
 
@@ -7,7 +15,7 @@ const cx = classNames.bind(styles);
 type IconPlace = 'start' | 'end';
 type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
 
-interface ButtonProps {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   icon?: ReactNode;
   iconPlace?: IconPlace;
@@ -15,8 +23,7 @@ interface ButtonProps {
   wide?: boolean;
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
-  onClick?: () => void; // TODO: Change to button on click
-  form?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   title?: string;
   className?: string;
   variant?: ButtonVariant;
@@ -34,7 +41,6 @@ export const Button: FC<ButtonProps> = forwardRef(
       children,
       disabled = false,
       onClick,
-      form,
       title,
       className,
       dataAutomationId,
@@ -56,7 +62,6 @@ export const Button: FC<ButtonProps> = forwardRef(
         disabled={disabled}
         className={classes}
         onClick={onClick}
-        form={form}
         title={title}
         data-automation-id={dataAutomationId}
         {...rest}
