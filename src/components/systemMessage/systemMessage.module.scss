@@ -1,19 +1,12 @@
-@import "../../assets/styles/variables/typography";
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
 
 // TODO: Discuss with UX team. There are no designs for the dark theme, so the theme-independent CSS properties are used
 
-// TODO: create a common mixin
-@mixin font-config($font, $size, $height, $color, $weight) {
-  font-family: $font;
-  font-size: $size;
-  line-height: $height;
-  color: $color;
-  font-weight: $weight;
-}
-
 @mixin message-headers($color) {
-  @include font-config(var(--rp-ui-kit-font-family-base), 15px, 24px, $color, $fw-medium);
-
+  @include font-scale(x2-medium);
+  font-weight: $fw-medium;
+  color: $color;
   text-transform: capitalize;
   margin-bottom: 8px;
 }
@@ -39,6 +32,7 @@
   box-shadow: var(--rp-ui-kit-item-shadow);
   display: flex;
   flex-direction: column;
+  font-family: var(--rp-ui-kit-font-family-base);
 
   .stripes-info {
     @include stripe-shape(var(--rp-ui-kit-sm-info-line-100), var(--rp-ui-kit-e-200));
@@ -73,13 +67,17 @@
 
     .children {
       text-indent: 1px;
-      @include font-config(var(--rp-ui-kit-font-family-base), 13px, 20px, var(--rp-ui-kit-almost-black), $fw-bold);
+      color: var(--rp-ui-kit-almost-black);
+      font-weight: $fw-bold;
+      @include font-scale();
     }
 
     p {
       margin-top: 4px;
       max-width: 780px;
-      @include font-config(var(--rp-ui-kit-font-family-base), 11px, 16px, var(--rp-ui-kit-e-400), $fw-regular);
+      color: var(--rp-ui-kit-e-400);
+      font-weight: $fw-regular;
+      @include font-scale(x-small);
     }
   }
 }

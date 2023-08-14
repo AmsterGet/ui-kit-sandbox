@@ -2,22 +2,20 @@ import { resolve } from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import EsLint from 'vite-plugin-linter';
+import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import * as packageJson from './package.json';
 
-const { EsLinter, linterPlugin } = EsLint;
-
-export default defineConfig((configEnv) => ({
-  plugins: [
-    react(),
-    tsConfigPaths(),
-    linterPlugin({
-      include: ['./src}/**/*.{ts,tsx}'],
-      linters: [new EsLinter({ configEnv })],
-    }),
-    dts(),
-  ],
+export default defineConfig(() => ({
+  plugins: [react(), svgr(), tsConfigPaths(), dts()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      '@assets': resolve(__dirname, './src/assets'),
+      '@components': resolve(__dirname, './src/components'),
+      '@constants': resolve(__dirname, './src/constants'),
+    },
+  },
   build: {
     lib: {
       // TODO: generate it automatically

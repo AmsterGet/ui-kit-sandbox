@@ -1,6 +1,5 @@
 import { FC, ReactNode, ReactElement, forwardRef, ForwardedRef } from 'react';
 import classNames from 'classnames/bind';
-import Parser from 'html-react-parser';
 import styles from './button.module.scss';
 
 const cx = classNames.bind(styles);
@@ -10,7 +9,7 @@ type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
 
 interface ButtonProps {
   children?: ReactNode;
-  icon?: string;
+  icon?: ReactNode;
   iconPlace?: IconPlace;
   dataAutomationId?: string;
   wide?: boolean;
@@ -68,7 +67,7 @@ export const Button: FC<ButtonProps> = forwardRef(
               [`icon-${iconPlace}`]: iconPlace,
             })}
           >
-            {Parser(buttonIcon)}
+            {buttonIcon}
           </i>
         )}
         {children}

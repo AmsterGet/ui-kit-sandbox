@@ -7,7 +7,9 @@
 :root {
   /* colors */
 
-  --rp-ui-kit-bg-000: #ffffff; // -> rp-ui-kit-color-background-000
+  --rp-ui-kit-bg-000: #ffffff;
+  --rp-ui-kit-bg-100: #f7f7f8;
+  --rp-ui-kit-bg-200: #eceff4;
 
   --rp-ui-kit-error: #dc5959; // prev.red-failed-2 -> --rp-ui-kit-color-error
   --rp-ui-kit-error-hover: #f24a4a; // rp-ui-kit-color-error-hover
@@ -57,9 +59,6 @@
   --rp-ui-kit-darkmode-error-text: #ff6666;
   --rp-ui-kit-darkmode-fatal: #c2352b;
   --rp-ui-kit-darkmode-error: #ff3222;
-  --rp-ui-kit-bg-100: #f7f7f8;
-  --rp-ui-kit-bg-200: #eceff4;
-
 
   // --rp-ui-kit-item-shadow: rgba(#374362, 0.1); // TODO: Recheck
   // --rp-ui-kit-item-shadow-hover: rgba(#374362, 0.2); // TODO: Recheck

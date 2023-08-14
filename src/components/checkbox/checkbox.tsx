@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { FC, ReactElement, ReactNode, useRef, KeyboardEventHandler } from 'react';
-import { KeyCodes } from '../../constants/key-codes'; // TODO: fix linter aliases according to vite config
+import { KeyCodes } from '@constants/key-codes';
 import styles from './checkbox.module.scss';
 
 const cx = classNames.bind(styles);
