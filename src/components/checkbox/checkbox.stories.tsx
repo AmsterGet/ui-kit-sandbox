@@ -1,10 +1,11 @@
+import { ReactNode } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Checkbox } from './checkbox';
 import { ThemeProvider } from '../themeProvider';
 
 // TODO: Create Storybook decorator - https://storybook.js.org/docs/react/writing-stories/decorators
-const DarkWrapper = ({ children }) => (
+const DarkWrapper = (props: { children: ReactNode }) => (
   <div
     style={{
       marginTop: '20px',
@@ -12,7 +13,7 @@ const DarkWrapper = ({ children }) => (
       padding: '10px',
     }}
   >
-    <ThemeProvider theme="dark">{children}</ThemeProvider>
+    <ThemeProvider theme="dark">{props.children}</ThemeProvider>
   </div>
 );
 

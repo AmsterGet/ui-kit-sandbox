@@ -17,12 +17,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    project: './tsconfig.eslint.json',
+    project: ['./tsconfig.eslint.json', './tsconfig.node.json'],
   },
   plugins: ['react-refresh', 'prettier', 'react'],
   rules: {
     'react-refresh/only-export-components': ['warn', {
       allowConstantExport: true
     }],
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
   }
 };

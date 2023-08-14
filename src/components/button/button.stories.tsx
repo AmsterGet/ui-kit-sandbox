@@ -2,8 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from './button';
 import { ThemeProvider } from '../themeProvider';
+import { ReactNode } from 'react';
 
-const DarkWrapper = ({ children }) => (
+const DarkWrapper = (props: { children: ReactNode }) => (
   <div
     style={{
       marginTop: '20px',
@@ -11,7 +12,7 @@ const DarkWrapper = ({ children }) => (
       padding: '10px',
     }}
   >
-    <ThemeProvider theme="dark">{children}</ThemeProvider>
+    <ThemeProvider theme="dark">{props.children}</ThemeProvider>
   </div>
 );
 

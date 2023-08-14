@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { FC, ReactElement, ReactNode, useRef } from 'react';
+import { FC, ReactElement, ReactNode, useRef, KeyboardEventHandler } from 'react';
 import { KeyCodes } from '../../constants/key-codes'; // TODO: fix linter aliases according to vite config
 import styles from './checkbox.module.scss';
 
@@ -29,9 +29,9 @@ export const Checkbox: FC<CheckboxProps> = ({
   dataAutomationId,
   form,
 }): ReactElement => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { keyCode } = event;
 
     if (keyCode === KeyCodes.SPACE_KEY_CODE) {
@@ -41,7 +41,7 @@ export const Checkbox: FC<CheckboxProps> = ({
 
     if (keyCode === KeyCodes.ENTER_KEY_CODE) {
       event.preventDefault();
-      inputRef.current.click();
+      inputRef.current?.click();
     }
   };
 
@@ -57,7 +57,7 @@ export const Checkbox: FC<CheckboxProps> = ({
     >
       <input
         ref={inputRef}
-        tabIndex="0"
+        tabIndex={0}
         type="checkbox"
         onKeyDown={handleKeyDown}
         className={cx('input')}
