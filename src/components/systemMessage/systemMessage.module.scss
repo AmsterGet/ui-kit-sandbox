@@ -29,7 +29,7 @@
   width: 100%;
   background: var(--rp-ui-kit-bg-000);
   border-radius: 8px;
-  box-shadow: var(--rp-ui-kit-item-shadow);
+  box-shadow: var(--rp-ui-kit-shadow);
   display: flex;
   flex-direction: column;
   font-family: var(--rp-ui-kit-font-family-base);
@@ -67,7 +67,7 @@
 
     .children {
       text-indent: 1px;
-      color: var(--rp-ui-kit-almost-black);
+      color: var(--rp-ui-kit-color-text);
       font-weight: $fw-bold;
       @include font-scale();
     }

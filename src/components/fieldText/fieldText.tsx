@@ -8,7 +8,7 @@ import {
   HTMLAttributes,
 } from 'react';
 import classNames from 'classnames/bind';
-import { ReactComponent as CrossIcon } from '@assets/icons/cross.svg';
+import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
 import styles from './fieldText.module.scss';
 
 const cx = classNames.bind(styles);
@@ -86,7 +86,7 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
         >
           {startIcon && (
             <span className={cx('icon-container-start')}>
-              <i className={cx('icon')}>{startIcon}</i>
+              <span className={cx('icon')}>{startIcon}</span>
             </span>
           )}
           <span className={cx('input-container')}>
@@ -108,14 +108,14 @@ export const FieldText: FC<FieldTextProps> = forwardRef(
           </span>
           {endIcon && (
             <span className={cx('icon-container-end')}>
-              <i className={cx('icon')}>{endIcon}</i>
+              <span className={cx('icon')}>{endIcon}</span>
             </span>
           )}
           {clearable && (
             <span className={cx('icon-container-end')}>
-              <i className={cx('clear-icon', { disabled })} onClick={clearInput}>
-                <CrossIcon />
-              </i>
+              <button type="button" className={cx('clear-icon', { disabled })} onClick={clearInput}>
+                <ClearIcon />
+              </button>
             </span>
           )}
         </div>

@@ -14,19 +14,20 @@ export default defineConfig(() => ({
       '@': resolve(__dirname, './src'),
       '@assets': resolve(__dirname, './src/assets'),
       '@components': resolve(__dirname, './src/components'),
-      '@constants': resolve(__dirname, './src/constants'),
+      '@common': resolve(__dirname, './src/common'),
     },
   },
   build: {
     lib: {
       // TODO: generate it automatically
       entry: {
-        themeProvider: resolve('src', 'components', 'themeProvider'),
         index: resolve('src', 'components'),
+        themeProvider: resolve('src', 'components', 'themeProvider'),
         button: resolve('src', 'components', 'button'),
         checkbox: resolve('src', 'components', 'checkbox'),
         systemMessage: resolve('src', 'components', 'systemMessage'),
-        fieldText: resolve('src', 'components', 'FieldText'),
+        fieldText: resolve('src', 'components', 'fieldText'),
+        modal: resolve('src', 'components', 'modal'),
       },
       name: 'ui-kit',
       formats: ['es'],
@@ -36,6 +37,7 @@ export default defineConfig(() => ({
         ...Object.keys(packageJson.dependencies),
         ...Object.keys(packageJson.peerDependencies),
         'react/jsx-runtime',
+        'classnames/bind',
       ],
     },
   },

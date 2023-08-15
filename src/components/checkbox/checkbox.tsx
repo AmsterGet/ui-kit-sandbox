@@ -8,7 +8,7 @@ import {
   ChangeEventHandler,
   HTMLAttributes,
 } from 'react';
-import { KeyCodes } from '@constants/key-codes';
+import { KeyCodes } from '@common/constants/key-codes';
 import styles from './checkbox.module.scss';
 
 const cx = classNames.bind(styles);

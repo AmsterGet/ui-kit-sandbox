@@ -14,13 +14,14 @@ const cx = classNames.bind(styles);
 
 type IconPlace = 'start' | 'end';
 type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
+type ButtonWidth = 'content' | 'wide-content' | 'parent';
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
   icon?: ReactNode;
   iconPlace?: IconPlace;
   dataAutomationId?: string;
-  wide?: boolean;
+  adjustWidthOn?: ButtonWidth;
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -36,7 +37,7 @@ export const Button: FC<ButtonProps> = forwardRef(
       variant = 'primary',
       icon,
       iconPlace = 'start',
-      wide = false,
+      adjustWidthOn = 'content',
       type = 'button',
       children,
       disabled = false,
@@ -50,7 +51,7 @@ export const Button: FC<ButtonProps> = forwardRef(
   ): ReactElement => {
     const classes = cx('button', variant, className, {
       disabled,
-      wide,
+      [`width-${adjustWidthOn}`]: adjustWidthOn,
     });
 
     const buttonIcon = variant === 'text' && icon;
