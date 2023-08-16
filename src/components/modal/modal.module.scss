@@ -26,12 +26,12 @@ $Z-INDEX-OVERLAY: 2;
 }
 
 .overlay-default {
-  background-color: rgba(var(--rp-ui-kit-e-400), 0.35);
+  background-color: var(--rp-ui-kit-overlay);
   z-index: $Z_INDEX-OVERLAY;
 }
 
 .overlay-light-cyan {
-  background-color: rgba(var(--rp-ui-kit-light-cyan), 0.7);
+  background-color: var(--rp-ui-kit-overlay-light-cyan);
   z-index: $Z_INDEX-OVERLAY;
 }
 

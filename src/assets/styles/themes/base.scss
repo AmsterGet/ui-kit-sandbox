@@ -27,8 +27,6 @@
   --rp-ui-kit-e-300: #a2aab5;
   --rp-ui-kit-e-400: #8d95a1;
 
-  --rp-ui-kit-light-cyan: #d0f0f1;
-
   --rp-ui-kit-dark-topaz-main: #1a9cb0; // --rp-ui-kit-color-primary
   --rp-ui-kit-dark-topaz-hover: #1cb0c7; // --rp-ui-kit-color-primary-hover
   --rp-ui-kit-dark-topaz-focused: #1dbdd6; // --rp-ui-kit-color-primary-focused
@@ -78,6 +76,10 @@
   --rp-ui-kit-shadow: 0px 1px 3px rgba(55, 67, 98, 0.1);
   --rp-ui-kit-shadow-hover: 0px 1px 3px rgba(55, 67, 98, 0.2);
   --rp-ui-kit-shadow-secondary: 0 8px 40px rgba(0, 0, 0, 0.15);
+
+  /* overlays */
+  --rp-ui-kit-overlay: rgba(141, 149, 161, 0.35);
+  --rp-ui-kit-overlay-light-cyan: rgba(208, 240, 241, 0.7);
 
   /* fonts */
   --rp-ui-kit-font-family-base: Roboto, Arial, Helvetica, sans-serif;

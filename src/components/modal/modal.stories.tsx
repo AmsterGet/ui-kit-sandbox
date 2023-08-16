@@ -44,6 +44,12 @@ export const Large: Story = {
   },
 };
 
+export const OverlayLightCyan: Story = {
+  args: {
+    overlay: 'light-cyan',
+  },
+};
+
 export const WithBigContent: Story = {
   args: {
     children: (
