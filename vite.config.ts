@@ -37,7 +37,6 @@ export default defineConfig(() => ({
         ...Object.keys(packageJson.dependencies),
         ...Object.keys(packageJson.peerDependencies),
         'react/jsx-runtime',
-        'classnames/bind',
       ],
     },
   },

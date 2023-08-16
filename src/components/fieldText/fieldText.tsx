@@ -5,7 +5,7 @@ import {
   ForwardedRef,
   ReactElement,
   ReactNode,
-  HTMLAttributes,
+  ComponentPropsWithRef,
 } from 'react';
 import classNames from 'classnames/bind';
 import { ReactComponent as ClearIcon } from '@assets/icons/clear.svg';
@@ -13,7 +13,7 @@ import styles from './fieldText.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface FieldTextProps extends HTMLAttributes<HTMLInputElement> {
+interface FieldTextProps extends ComponentPropsWithRef<'input'> {
   value?: string;
   className?: string;
   error?: string;

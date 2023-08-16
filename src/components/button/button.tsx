@@ -4,7 +4,7 @@ import {
   ReactElement,
   forwardRef,
   ForwardedRef,
-  HTMLAttributes,
+  ComponentPropsWithRef,
   MouseEventHandler,
 } from 'react';
 import classNames from 'classnames/bind';
@@ -16,7 +16,7 @@ type IconPlace = 'start' | 'end';
 type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
 type ButtonWidth = 'content' | 'wide-content' | 'parent';
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   children?: ReactNode;
   icon?: ReactNode;
   iconPlace?: IconPlace;
