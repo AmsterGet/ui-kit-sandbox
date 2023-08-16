@@ -4,6 +4,8 @@ $WIDTH-LARGE: 720px;
 
 $Z-INDEX-OVERLAY: 2;
 
+// TODO: Discuss with UX team. There are no designs for the dark theme, so the theme-independent CSS properties are used
+
 @mixin modalWidth($width) {
   width: $width;
 

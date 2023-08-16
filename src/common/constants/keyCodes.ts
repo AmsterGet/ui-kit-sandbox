@@ -2,4 +2,6 @@ export enum KeyCodes {
   SPACE_KEY_CODE = 32,
   ENTER_KEY_CODE = 13,
   ESCAPE_KEY_CODE = 27,
+  ARROW_DOWN_KEY_CODE = 40,
+  TAB_KEY_CODE = 9,
 }

@@ -28,6 +28,7 @@ export default defineConfig(() => ({
         systemMessage: resolve('src', 'components', 'systemMessage'),
         fieldText: resolve('src', 'components', 'fieldText'),
         modal: resolve('src', 'components', 'modal'),
+        dropdown: resolve('src', 'components', 'dropdown'),
       },
       name: 'ui-kit',
       formats: ['es'],

@@ -8,7 +8,7 @@ import {
   ChangeEventHandler,
   HTMLAttributes,
 } from 'react';
-import { KeyCodes } from '@common/constants/key-codes';
+import { KeyCodes } from '@common/constants/keyCodes';
 import styles from './checkbox.module.scss';
 
 const cx = classNames.bind(styles);
@@ -18,7 +18,6 @@ interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
   children?: ReactNode;
   disabled?: boolean;
   className?: string;
-  dataAutomationId?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
@@ -29,7 +28,6 @@ export const Checkbox: FC<CheckboxProps> = ({
   onChange,
   className,
   value,
-  dataAutomationId,
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -55,7 +53,6 @@ export const Checkbox: FC<CheckboxProps> = ({
       className={cx('checkbox', className, {
         disabled,
       })}
-      data-automation-id={dataAutomationId}
     >
       <input
         ref={inputRef}
