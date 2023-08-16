@@ -1,4 +1,8 @@
 .rp-ui-kit-theme-dark {
+  --rp-ui-kit-color-bg: var(--rp-ui-kit-dark-bg);
+  --rp-ui-kit-color-bg-2: var(--rp-ui-kit-dark-bg);
+  --rp-ui-kit-color-bg-3: var(--rp-ui-kit-dark-bg-solid-98);
+
   --rp-ui-kit-color-primary: var(--rp-ui-kit-dark-topaz-main);
   --rp-ui-kit-color-primary-hover: var(--rp-ui-kit-dark-topaz-hover);
   --rp-ui-kit-color-primary-focused: var(--rp-ui-kit-dark-topaz-focused);
@@ -6,16 +10,24 @@
   --rp-ui-kit-color-primary-text: var(--rp-ui-kit-dark-topaz-text);
 
   // TODO: Discuss with UX team these colors for dark theme
-  --rp-ui-kit-color-error: var(--rp-ui-kit-error);
+  --rp-ui-kit-color-error: var(--rp-ui-kit-dark-error);
   --rp-ui-kit-color-error-hover: var(--rp-ui-kit-error-hover);
   --rp-ui-kit-color-error-pressed: var(--rp-ui-kit-error-pressed);
   --rp-ui-kit-color-error-focused: var(--rp-ui-kit-error-focused);
 
   --rp-ui-kit-color-text: var(--rp-ui-kit-dark-e-50);
   --rp-ui-kit-color-text-2: var(--rp-ui-kit-dark-e-100);
+  --rp-ui-kit-color-text-3: var(--rp-ui-kit-bg-000);
+
+  --rp-ui-kit-color-field-bg: var(--rp-ui-kit-dark-e-400);
+  --rp-ui-kit-color-field-bg-2: var(--rp-ui-kit-dark-e-400);
+  --rp-ui-kit-color-field-border: var(--rp-ui-kit-dark-e-400);
+  --rp-ui-kit-color-field-hover: var(--rp-ui-kit-e-200);
+  --rp-ui-kit-color-field-hover-2: var(--rp-ui-kit-e-300);
+  --rp-ui-kit-color-field-opened: var(--rp-ui-kit-e-200);
+  --rp-ui-kit-color-field-placeholder: var(--rp-ui-kit-dark-e-200);
 
   --rp-ui-kit-color-disabled: var(--rp-ui-kit-dark-e-100);
-  --rp-ui-kit-color-gray-hover: var(--rp-ui-kit-dark-e-50);
 
   --rp-ui-kit-opacity-default: 50%;
 }

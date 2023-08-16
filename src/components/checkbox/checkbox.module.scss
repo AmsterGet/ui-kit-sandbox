@@ -47,7 +47,7 @@
     @include checked-state(var(--rp-ui-kit-color-primary));
   }
   &:hover + .control {
-    border-color: var(--rp-ui-kit-color-gray-hover);
+    border-color: var(--rp-ui-kit-color-field-hover-2);
   }
   &:active:not(:disabled) + .control {
     border: 2px solid var(--rp-ui-kit-color-primary-focused);

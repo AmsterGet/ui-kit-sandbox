@@ -3,7 +3,7 @@ import { Scrollbars } from 'rc-scrollbars';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames/bind';
 import { useOnClickOutside, useWindowResize } from '@common/hooks';
-import { KeyCodes } from '@common/constants/key-codes';
+import { KeyCodes } from '@common/constants/keyCodes';
 import { ButtonProps } from '@components/button';
 import { ModalContent } from './modalContent';
 import { ModalFooter, ModalSize } from './modalFooter';
@@ -58,8 +58,10 @@ export const Modal: FC<ModalProps> = ({
     setShown(false);
   };
 
-  const onKeydown = (e: KeyboardEvent) => {
-    if (e.keyCode === KeyCodes.ESCAPE_KEY_CODE) {
+  const onKeydown = (event: KeyboardEvent) => {
+    const { keyCode } = event;
+
+    if (keyCode === KeyCodes.ESCAPE_KEY_CODE) {
       closeModal();
     }
   };
