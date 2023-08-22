@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import '../../assets/styles/themes/index.scss';
+import '@assets/styles/themes/index.scss';
 
 type ThemeKey = 'light' | 'dark' | string;
 

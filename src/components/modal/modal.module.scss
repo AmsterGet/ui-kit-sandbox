@@ -1,0 +1,72 @@
+$WIDTH-SMALL: 320px;
+$WIDTH-DEFAULT: 480px;
+$WIDTH-LARGE: 720px;
+
+$Z-INDEX-OVERLAY: 2;
+
+@mixin modalWidth($width) {
+  width: $width;
+
+  @media (max-width: $width) {
+    right: 10px;
+    left: 10px;
+    transform: none;
+    width: auto;
+  }
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.overlay-default {
+  background-color: var(--rp-ui-kit-overlay);
+  z-index: $Z_INDEX-OVERLAY;
+}
+
+.overlay-light-cyan {
+  background-color: var(--rp-ui-kit-overlay-light-cyan);
+  z-index: $Z_INDEX-OVERLAY;
+}
+
+.scrolling-content {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: $Z-INDEX-OVERLAY;
+}
+
+.modal-window {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 32px 48px;
+  box-sizing: border-box;
+  background-color: var(--rp-ui-kit-bg-100);
+  text-align: left;
+  border-radius: 16px;
+  box-shadow: var(--rp-ui-kit-shadow-secondary);
+  opacity: 1;
+  outline: none;
+  max-height: 90%;
+}
+
+.size-default {
+  @include modalWidth($WIDTH-DEFAULT);
+}
+
+.size-small {
+  @include modalWidth($WIDTH-SMALL);
+}
+
+.size-large {
+  @include modalWidth($WIDTH-LARGE);
+}

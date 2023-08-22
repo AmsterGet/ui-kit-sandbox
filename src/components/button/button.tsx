@@ -1,23 +1,30 @@
-import { FC, ReactNode, ReactElement, forwardRef, ForwardedRef } from 'react';
+import {
+  FC,
+  ReactNode,
+  ReactElement,
+  forwardRef,
+  ForwardedRef,
+  ComponentPropsWithRef,
+  MouseEventHandler,
+} from 'react';
 import classNames from 'classnames/bind';
-import Parser from 'html-react-parser';
 import styles from './button.module.scss';
 
 const cx = classNames.bind(styles);
 
 type IconPlace = 'start' | 'end';
 type ButtonVariant = 'primary' | 'ghost' | 'danger' | 'text';
+type ButtonWidth = 'content' | 'wide-content' | 'parent';
 
-interface ButtonProps {
+export interface ButtonProps extends ComponentPropsWithRef<'button'> {
   children?: ReactNode;
-  icon?: string;
+  icon?: ReactNode;
   iconPlace?: IconPlace;
   dataAutomationId?: string;
-  wide?: boolean;
+  adjustWidthOn?: ButtonWidth;
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
-  onClick?: () => void; // TODO: Change to button on click
-  form?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   title?: string;
   className?: string;
   variant?: ButtonVariant;
@@ -30,12 +37,11 @@ export const Button: FC<ButtonProps> = forwardRef(
       variant = 'primary',
       icon,
       iconPlace = 'start',
-      wide = false,
+      adjustWidthOn = 'content',
       type = 'button',
       children,
       disabled = false,
       onClick,
-      form,
       title,
       className,
       dataAutomationId,
@@ -45,7 +51,7 @@ export const Button: FC<ButtonProps> = forwardRef(
   ): ReactElement => {
     const classes = cx('button', variant, className, {
       disabled,
-      wide,
+      [`width-${adjustWidthOn}`]: adjustWidthOn,
     });
 
     const buttonIcon = variant === 'text' && icon;
@@ -57,7 +63,6 @@ export const Button: FC<ButtonProps> = forwardRef(
         disabled={disabled}
         className={classes}
         onClick={onClick}
-        form={form}
         title={title}
         data-automation-id={dataAutomationId}
         {...rest}
@@ -68,7 +73,7 @@ export const Button: FC<ButtonProps> = forwardRef(
               [`icon-${iconPlace}`]: iconPlace,
             })}
           >
-            {Parser(buttonIcon)}
+            {buttonIcon}
           </i>
         )}
         {children}

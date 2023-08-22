@@ -19,6 +19,14 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.eslint.json', './tsconfig.node.json'],
   },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['./tsconfig.eslint.json'],
+      }
+    }
+  },
   plugins: ['react-refresh', 'prettier', 'react'],
   rules: {
     'react-refresh/only-export-components': ['warn', {

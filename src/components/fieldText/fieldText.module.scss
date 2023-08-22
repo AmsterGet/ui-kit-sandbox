@@ -1,0 +1,188 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+// TODO: Discuss with UX team. There are no designs for the dark theme, so the theme-independent CSS properties are used
+
+@mixin fill-svg($color) {
+  svg {
+    fill: $color;
+
+    & > rect {
+      fill: $color;
+    }
+  }
+}
+
+@mixin asterisk() {
+  position: absolute;
+  top: -3px;
+  color: var(--rp-ui-kit-e-300);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+}
+
+.icon-container-start {
+  @extend .icon-container;
+  margin-right: 4px;
+}
+
+.icon-container-end {
+  @extend .icon-container;
+  margin-left: 4px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-medium;
+  @include font-scale();
+  color: var(--rp-ui-kit-color-text);
+
+  .asterisk {
+    @include asterisk();
+    padding-left: 4px;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+  }
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 100%;
+  padding: 7px 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--rp-ui-kit-e-200);
+  border-radius: 3px;
+  background-color: var(--rp-ui-kit-bg-000);
+
+  &:hover:not(.disabled) {
+    border-color: var(--rp-ui-kit-e-300);
+  }
+
+  &:focus-within:not(.error.touched) {
+    padding: 6px 11px;
+    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+  }
+
+  &.error.touched {
+    border-color: var(--rp-ui-kit-error);
+  }
+
+  &.disabled {
+    opacity: 0.3;
+  }
+
+  &.default-width {
+    width: 240px;
+  }
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  @include font-scale();
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  width: 100%;
+  margin: 2px 0 0 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--rp-ui-kit-color-text);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.placeholder {
+  @include font-scale();
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  color: var(--rp-ui-kit-dark-e-200);
+  position: absolute;
+  top: 2px;
+  left: 0;
+  pointer-events: none;
+
+  .asterisk:after {
+    @include asterisk();
+    right: -7px;
+    content: '*';
+    color: var(--rp-ui-kit-error-focused);
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.clear-icon {
+  @extend .icon;
+
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+  cursor: pointer;
+
+  &.disabled {
+    pointer-events: none;
+  }
+
+  &:hover {
+    @include fill-svg(var(--rp-ui-kit-e-400));
+  }
+
+  &:focus {
+    @include fill-svg(var(--rp-ui-kit-color-primary-focused));
+  }
+
+  &:active {
+    @include fill-svg(var(--rp-ui-kit-color-primary-pressed));
+  }
+}
+
+.additional-content {
+  margin-top: 4px;
+
+  &.disabled {
+    pointer-events: none;
+  }
+}
+
+.text {
+  @include font-scale(s-small);
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  display: block;
+}
+
+.error-text {
+  color: var(--rp-ui-kit-error);
+}
+
+.help-text {
+  color: var(--rp-ui-kit-dark-e-300);
+}
+

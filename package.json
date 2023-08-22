@@ -1,6 +1,6 @@
 {
   "name": "@reportportal/ui-kit",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.5",
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006",
@@ -22,7 +22,8 @@
   },
   "dependencies": {
     "classnames": "^2.3.2",
-    "html-react-parser": "^4.2.0"
+    "framer-motion": "^10.15.2",
+    "rc-scrollbars": "^1.1.6"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.2.0",
@@ -34,7 +35,7 @@
     "@storybook/react-vite": "^7.2.0",
     "@storybook/testing-library": "^0.2.0",
     "@types/node": "^20.4.5",
-    "@types/react": "^18.2.15",
+    "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -42,6 +43,7 @@
     "eslint": "^8.46.0",
     "eslint-config-airbnb-typescript": "^15.0.0",
     "eslint-config-prettier": "^8.10.0",
+    "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.1",
@@ -58,7 +60,7 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.4.0",
-    "vite-plugin-linter": "^2.0.2",
+    "vite-plugin-svgr": "^3.2.0",
     "vite-tsconfig-paths": "^4.2.0"
   }
 }

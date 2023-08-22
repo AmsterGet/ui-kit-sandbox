@@ -1,0 +1,51 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.modal-header {
+  position: relative;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  @include font-scale(x4-medium);
+  color: var(--rp-ui-kit-color-text);
+  padding-bottom: 24px;
+}
+
+.modal-header-content {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  width: 100%;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+.modal-title {
+  flex-grow: 1;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.close-modal-icon {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  line-height: normal;
+  cursor: pointer;
+
+  &:hover {
+    svg {
+      fill: var(--rp-ui-kit-e-400);
+    }
+  }
+
+  &:active {
+    svg {
+      fill: var(--rp-ui-kit-color-primary-pressed);
+    }
+  }
+}

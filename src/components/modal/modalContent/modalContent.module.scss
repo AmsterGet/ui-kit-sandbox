@@ -1,0 +1,13 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.modal-content {
+  width: calc(100% - 34px);
+  margin-top: 13px;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  @include font-scale();
+  color: var(--rp-ui-kit-color-text);
+  white-space: pre-line;
+  word-break: break-word;
+}

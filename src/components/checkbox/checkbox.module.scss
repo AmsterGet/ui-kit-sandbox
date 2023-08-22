@@ -1,4 +1,5 @@
-@import "../../assets/styles/variables/typography";
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
 
 @mixin checked-state($color) {
   border-color: $color;
@@ -16,8 +17,7 @@
   border-color: var(--rp-ui-kit-color-text-2);
   font-family: var(--rp-ui-kit-font-family-base);
   font-weight: $fw-medium;
-  font-size: 13px;
-  line-height: 20px;
+  @include font-scale();
   .disabled {
     opacity: var(--rp-ui-kit-opacity-default);
     pointer-events: none;

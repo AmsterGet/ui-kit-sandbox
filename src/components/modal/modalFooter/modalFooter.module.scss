@@ -1,0 +1,44 @@
+.buttons-block {
+  white-space: nowrap;
+}
+
+.button-container {
+  display: inline-block;
+  min-width: 70px;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.modal-footer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 16px;
+
+  &.with-extra-node {
+    justify-content: space-between;
+  }
+}
+
+.size-small {
+  flex-direction: column;
+  align-items: stretch;
+
+  .buttons-block {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-container {
+    margin: 0 0 10px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

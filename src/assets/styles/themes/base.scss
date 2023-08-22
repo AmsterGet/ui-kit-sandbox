@@ -7,7 +7,9 @@
 :root {
   /* colors */
 
-  --rp-ui-kit-bg-000: #ffffff; // -> rp-ui-kit-color-background-000
+  --rp-ui-kit-bg-000: #ffffff;
+  --rp-ui-kit-bg-100: #f7f7f8;
+  --rp-ui-kit-bg-200: #eceff4;
 
   --rp-ui-kit-error: #dc5959; // prev.red-failed-2 -> --rp-ui-kit-color-error
   --rp-ui-kit-error-hover: #f24a4a; // rp-ui-kit-color-error-hover
@@ -57,9 +59,6 @@
   --rp-ui-kit-darkmode-error-text: #ff6666;
   --rp-ui-kit-darkmode-fatal: #c2352b;
   --rp-ui-kit-darkmode-error: #ff3222;
-  --rp-ui-kit-bg-100: #f7f7f8;
-  --rp-ui-kit-bg-200: #eceff4;
-
 
   // --rp-ui-kit-item-shadow: rgba(#374362, 0.1); // TODO: Recheck
   // --rp-ui-kit-item-shadow-hover: rgba(#374362, 0.2); // TODO: Recheck
@@ -74,8 +73,13 @@
   --rp-ui-kit-test-execution-status-passed: #3aa76d;
 
   /* shadows */
-  --rp-ui-kit-item-shadow: 0px 1px 3px rgba(55, 67, 98, 0.1);
-  --rp-ui-kit-item-shadow-hover: 0px 1px 3px rgba(55, 67, 98, 0.2);
+  --rp-ui-kit-shadow: 0px 1px 3px rgba(55, 67, 98, 0.1);
+  --rp-ui-kit-shadow-hover: 0px 1px 3px rgba(55, 67, 98, 0.2);
+  --rp-ui-kit-shadow-secondary: 0 8px 40px rgba(0, 0, 0, 0.15);
+
+  /* overlays */
+  --rp-ui-kit-overlay: rgba(141, 149, 161, 0.35);
+  --rp-ui-kit-overlay-light-cyan: rgba(208, 240, 241, 0.7);
 
   /* fonts */
   --rp-ui-kit-font-family-base: Roboto, Arial, Helvetica, sans-serif;

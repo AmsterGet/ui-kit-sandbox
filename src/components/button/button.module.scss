@@ -1,100 +1,100 @@
-@import "../../assets/styles/variables/typography";
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
 
 .button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 120px;
-    height: 36px;
-    padding: 9px 16px 7px;
-    margin: 0;
-    outline: none;
-    border-radius: 3px;
-    font-family: var(--rp-ui-kit-font-family-base);
-    font-weight: $fw-medium;
-    font-size: 13px;
-    line-height: 20px;
-    cursor: pointer;
-    box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  height: 36px;
+  padding: 9px 16px 7px;
+  margin: 0;
+  outline: none;
+  border-radius: 3px;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-medium;
+  @include font-scale();
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .primary {
-    border: 1px solid var(--rp-ui-kit-color-primary);
-    background-color: var(--rp-ui-kit-color-primary);
-    color: var(--rp-ui-kit-bg-000);
-    &:hover:not(.disabled) {
-        border: 1px solid var(--rp-ui-kit-color-primary-hover);
-        background-color: var(--rp-ui-kit-color-primary-hover);
-    }
-    &:active:not(.disabled) {
-        border: 1px solid var(--rp-ui-kit-color-primary-pressed);
-        background-color: var(--rp-ui-kit-color-primary-pressed);
-    }
-    &:focus:not(.disabled, :active) {
-        border: 2px solid var(--rp-ui-kit-color-primary-focused);
-    }
+  border: 1px solid var(--rp-ui-kit-color-primary);
+  background-color: var(--rp-ui-kit-color-primary);
+  color: var(--rp-ui-kit-bg-000);
+  &:hover:not(.disabled) {
+    border: 1px solid var(--rp-ui-kit-color-primary-hover);
+    background-color: var(--rp-ui-kit-color-primary-hover);
+  }
+  &:active:not(.disabled) {
+    border: 1px solid var(--rp-ui-kit-color-primary-pressed);
+    background-color: var(--rp-ui-kit-color-primary-pressed);
+  }
+  &:focus:not(.disabled, :active) {
+    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+  }
 }
 
 .ghost {
-    border: 1px solid var(--rp-ui-kit-color-primary);
-    background-color: transparent;
-    color: var(--rp-ui-kit-color-text);
-    &:hover:not(.disabled) {
-        border: 1px solid var(--rp-ui-kit-color-primary-hover);
-    }
-    &:active:not(.disabled) {
-        border: 1px solid var(--rp-ui-kit-color-primary-pressed);
-    }
-    &:focus:not(.disabled, :active) {
-        border: 2px solid var(--rp-ui-kit-color-primary-focused);
-    }
+  border: 1px solid var(--rp-ui-kit-color-primary);
+  background-color: transparent;
+  color: var(--rp-ui-kit-color-text);
+  &:hover:not(.disabled) {
+    border: 1px solid var(--rp-ui-kit-color-primary-hover);
+  }
+  &:active:not(.disabled) {
+    border: 1px solid var(--rp-ui-kit-color-primary-pressed);
+  }
+  &:focus:not(.disabled, :active) {
+    border: 2px solid var(--rp-ui-kit-color-primary-focused);
+  }
 }
 
 .danger {
-    border: 1px solid var(--rp-ui-kit-color-error);
-    background-color: var(--rp-ui-kit-color-error);
-    color: var(--rp-ui-kit-bg-000);
-    &:hover:not(.disabled) {
-        opacity: 0.9;
-    }
-    &:active:not(.disabled) {
-        border: 1px solid var(--rp-ui-kit-color-error-pressed);
-        background-color: var(--rp-ui-kit-color-error-pressed);
-    }
-    &:focus:not(.disabled, :active) {
-        border: 2px solid var(--rp-ui-kit-color-error-focused);
-    }
+  border: 1px solid var(--rp-ui-kit-color-error);
+  background-color: var(--rp-ui-kit-color-error);
+  color: var(--rp-ui-kit-bg-000);
+  &:hover:not(.disabled) {
+    opacity: 0.9;
+  }
+  &:active:not(.disabled) {
+    border: 1px solid var(--rp-ui-kit-color-error-pressed);
+    background-color: var(--rp-ui-kit-color-error-pressed);
+  }
+  &:focus:not(.disabled, :active) {
+    border: 2px solid var(--rp-ui-kit-color-error-focused);
+  }
 }
 
 .text {
-    min-width: auto;
-    height: auto;
-    border: 0;
-    padding: 0;
-    background: none;
-    line-height: 22px;
-    color: var(--rp-ui-kit-color-primary-text);
-    &:hover:not(.disabled) {
-        color: var(--rp-ui-kit-color-primary-hover);
-        svg * {
-            fill: var(--rp-ui-kit-color-primary-hover);
-        }
-    }
-    &:active:not(.disabled) {
-        color: var(--rp-ui-kit-color-primary-pressed);
-        svg * {
-            fill: var(--rp-ui-kit-color-primary-pressed);
-        }
-    }
-    &:focus:not(.disabled, :active) {
-        color: var(--rp-ui-kit-color-primary-focused);
-        svg * {
-            fill: var(--rp-ui-kit-color-primary-focused);
-        }
-    }
+  min-width: auto;
+  height: auto;
+  border: 0;
+  padding: 0;
+  background: none;
+  line-height: 22px;
+  color: var(--rp-ui-kit-color-primary-text);
+  &:hover:not(.disabled) {
+    color: var(--rp-ui-kit-color-primary-hover);
     svg * {
-        fill: var(--rp-ui-kit-color-primary-text);
+      fill: var(--rp-ui-kit-color-primary-hover);
     }
+  }
+  &:active:not(.disabled) {
+    color: var(--rp-ui-kit-color-primary-pressed);
+    svg * {
+      fill: var(--rp-ui-kit-color-primary-pressed);
+    }
+  }
+  &:focus:not(.disabled, :active) {
+    color: var(--rp-ui-kit-color-primary-focused);
+    svg * {
+      fill: var(--rp-ui-kit-color-primary-focused);
+    }
+  }
+  svg * {
+    fill: var(--rp-ui-kit-color-primary-text);
+  }
 }
 
 .disabled {
@@ -102,21 +102,26 @@
   cursor: default;
 }
 
-.wide {
-    padding: 9px 47px 7px;
-    margin: 0;
+.width-wide-content {
+  padding: 9px 47px 7px;
+  margin: 0;
+}
+
+.width-parent {
+  display: flex;
+  width: 100%;
 }
 
 .icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
 }
 
 .icon-start {
-    margin: auto 8px auto 0;
+  margin: auto 8px auto 0;
 }
 .icon-end {
-    margin: auto 0 auto 8px;
-    order: 1;
+  margin: auto 0 auto 8px;
+  order: 1;
 }

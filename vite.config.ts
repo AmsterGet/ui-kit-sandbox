@@ -2,37 +2,42 @@ import { resolve } from 'path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-import EsLint from 'vite-plugin-linter';
+import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import * as packageJson from './package.json';
 
-const { EsLinter, linterPlugin } = EsLint;
-
-export default defineConfig((configEnv) => ({
-  plugins: [
-    react(),
-    tsConfigPaths(),
-    linterPlugin({
-      include: ['./src}/**/*.{ts,tsx}'],
-      linters: [new EsLinter({ configEnv })],
-    }),
-    dts(),
-  ],
+// TODO: build styles for components individually
+export default defineConfig(() => ({
+  plugins: [react(), svgr(), tsConfigPaths(), dts()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      '@assets': resolve(__dirname, './src/assets'),
+      '@components': resolve(__dirname, './src/components'),
+      '@common': resolve(__dirname, './src/common'),
+    },
+  },
   build: {
     lib: {
       // TODO: generate it automatically
       entry: {
-        themeProvider: resolve('src', 'components', 'themeProvider'),
         index: resolve('src', 'components'),
+        themeProvider: resolve('src', 'components', 'themeProvider'),
         button: resolve('src', 'components', 'button'),
         checkbox: resolve('src', 'components', 'checkbox'),
         systemMessage: resolve('src', 'components', 'systemMessage'),
+        fieldText: resolve('src', 'components', 'fieldText'),
+        modal: resolve('src', 'components', 'modal'),
       },
       name: 'ui-kit',
       formats: ['es'],
     },
     rollupOptions: {
-      external: [...Object.keys(packageJson.peerDependencies), 'react/jsx-runtime'],
+      external: [
+        ...Object.keys(packageJson.dependencies),
+        ...Object.keys(packageJson.peerDependencies),
+        'react/jsx-runtime',
+      ],
     },
   },
 }));
