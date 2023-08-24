@@ -1,20 +1,24 @@
-export const getOptionValue = (value) => (value instanceof Object ? value.value : value);
+import { DropdownValue, DropdownOptionType } from './types';
 
-export const calculateDefaultIndex = (options, selectedValue) =>
-  options.map(({ value }) => value).indexOf(getOptionValue(selectedValue));
+export const calculateDefaultIndex = (
+  options: DropdownOptionType[],
+  selectedValue: DropdownValue,
+): number => options.map(({ value }) => value).indexOf(selectedValue);
 
-const calculateCurrentItemIndex = (index, itemsCount) =>
+const calculateCurrentItemIndex = (index: number, itemsCount: number): number =>
   ((index % itemsCount) + itemsCount) % itemsCount;
 
-const findNearestAvailableIndex = (index, options, step = 1) => {
+const findNearestAvailableIndex = (options: DropdownOptionType[], index = 0, step = 1): number => {
   if (!options[index].disabled) {
     return index;
   }
   const itemsCount = options.length;
 
-  return findNearestAvailableIndex(calculateCurrentItemIndex(index + step, itemsCount), options);
+  return findNearestAvailableIndex(options, calculateCurrentItemIndex(index + step, itemsCount));
 };
 
-export const calculateNextIndex = (index, options) => findNearestAvailableIndex(index, options);
+export const calculateNextIndex = (options: DropdownOptionType[], index?: number) =>
+  findNearestAvailableIndex(options, index);
 
-export const calculatePrevIndex = (index, options) => findNearestAvailableIndex(index, options, -1);
+export const calculatePrevIndex = (options: DropdownOptionType[], index?: number) =>
+  findNearestAvailableIndex(options, index, -1);

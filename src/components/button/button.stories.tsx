@@ -4,6 +4,7 @@ import { Button } from './button';
 import { ThemeProvider } from '../themeProvider';
 import { ReactNode } from 'react';
 
+// TODO: Create Storybook decorator - https://storybook.js.org/docs/react/writing-stories/decorators
 const DarkWrapper = (props: { children: ReactNode }) => (
   <div
     style={{

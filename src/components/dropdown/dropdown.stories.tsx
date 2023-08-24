@@ -10,12 +10,12 @@ const meta: Meta<typeof Dropdown> = {
   tags: ['autodocs'],
   args: {
     options: [
-      { value: 1, label: '1' },
-      { value: 2, label: '2' },
-      { value: 3, label: '3' },
+      { value: 1, label: 'One' },
+      { value: 2, label: 'Two' },
+      { value: 3, label: 'Three' },
     ],
     onChange: () => {},
-    value: 1,
+    value: 2,
   },
 };
 
