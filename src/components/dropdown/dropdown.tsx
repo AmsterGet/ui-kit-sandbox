@@ -60,7 +60,7 @@ export const Dropdown: FC<DropdownProps> = ({
   const [isOpened, setOpened] = useState(false);
   const containerRef = useRef(null);
   // allow setting updater with unknown type as react-popper doesn't expose the necessary one
-  const schedulePopperUpdate = useRef<() => Promise<unknown>>(null);
+  const schedulePopperUpdate = useRef<(() => Promise<unknown>) | null>(null);
 
   const handleClickOutside = () => {
     if (isOpened) {

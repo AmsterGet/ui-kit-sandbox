@@ -29,6 +29,7 @@ export default defineConfig(() => ({
         fieldText: resolve('src', 'components', 'fieldText'),
         modal: resolve('src', 'components', 'modal'),
         dropdown: resolve('src', 'components', 'dropdown'),
+        toggle: resolve('src', 'components', 'toggle'),
       },
       name: 'ui-kit',
       formats: ['es'],
