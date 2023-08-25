@@ -30,6 +30,13 @@ type Story = StoryObj<typeof Dropdown>;
 
 export const Default: Story = {
   args: {
+    value: 1,
+  },
+};
+
+export const Ghost: Story = {
+  args: {
     value: 2,
+    variant: 'ghost',
   },
 };

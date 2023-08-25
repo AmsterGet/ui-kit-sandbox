@@ -59,7 +59,8 @@ export const Dropdown: FC<DropdownProps> = ({
 }): ReactElement => {
   const [isOpened, setOpened] = useState(false);
   const containerRef = useRef(null);
-  const schedulePopperUpdate = useRef<() => Promise<null>>(null);
+  // allow setting updater with unknown type as react-popper doesn't expose the necessary one
+  const schedulePopperUpdate = useRef<() => Promise<unknown>>(null);
 
   const handleClickOutside = () => {
     if (isOpened) {
@@ -230,9 +231,6 @@ export const Dropdown: FC<DropdownProps> = ({
         </Reference>
         <Popper placement="bottom-start">
           {({ ref, style, update }) => {
-            // allow setting updater with unknown type as react-popper doesn't expose the necessary one
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             schedulePopperUpdate.current = update;
             return (
               <div
