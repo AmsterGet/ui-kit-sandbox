@@ -31,19 +31,20 @@ export const Toggle: FC<ToggleProps> = ({
   title,
   ...rest
 }): ReactElement => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleKeyDown: KeyboardEventHandler<HTMLInputElement> = (event) => {
     const { keyCode } = event;
 
     if (keyCode === KeyCodes.SPACE_KEY_CODE) {
       event.preventDefault();
+      inputRef.current?.click();
       return;
     }
 
     if (keyCode === KeyCodes.ENTER_KEY_CODE) {
       event.preventDefault();
-      inputRef.current.click();
+      inputRef.current?.click();
     }
   };
 
