@@ -1,0 +1,107 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  @include font-scale();
+  color: var(--rp-ui-kit-almost-black);
+  cursor: pointer;
+}
+
+.children-container {
+  margin-left: 40px;
+
+  & a {
+    text-decoration: none;
+    color: var(--rp-ui-kit-topaz);
+  }
+
+  & a:focus,
+  & a:focus-visible {
+    outline: none;
+    color: var(--rp-ui-kit-topaz-focused);
+    text-decoration: underline;
+  }
+}
+
+.slider {
+  background-color: var(--rp-ui-kit-e-200);
+  cursor: pointer;
+  position: absolute;
+  transition: 0.4s;
+  border-radius: 10px;
+  width: 32px;
+  height: 20px;
+  &:before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-color: var(--rp-ui-kit-bg-000);
+    transition: 0.4s;
+  }
+}
+
+.round:before {
+  border-radius: 50%;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+
+  &:disabled + .slider {
+    background-color: var(--rp-ui-kit-e-200);
+    cursor: default;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus:not(.disabled),
+  &:focus-visible:not(.disabled) + .slider {
+    &::after {
+      top: 50%;
+      left: 50%;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--rp-ui-kit-topaz-focused);
+      border-radius: 12px;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &:checked + .slider {
+    background-color: var(--rp-ui-kit-topaz);
+  }
+  &:checked + .slider:before {
+    transform: translateX(12px);
+  }
+  &:hover + .slider {
+    background-color: var(--rp-ui-kit-e-400);
+  }
+  &:checked:hover + .slider {
+    background-color: var(--rp-ui-kit-topaz-hover);
+  }
+
+  &:checked:disabled + .slider {
+    background-color: var(--rp-ui-kit-topaz);
+    cursor: default;
+  }
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: default;
+}
