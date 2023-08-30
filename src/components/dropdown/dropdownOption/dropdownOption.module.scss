@@ -1,0 +1,55 @@
+@import 'src/assets/styles/variables/typography';
+@import 'src/assets/styles/mixins/font-scale';
+
+.dropdown-option {
+  display: inline-block;
+  width: 100%;
+  padding: 9px 12px 7px;
+  font-family: var(--rp-ui-kit-font-family-base);
+  font-weight: $fw-regular;
+  @include font-scale();
+  box-sizing: border-box;
+  cursor: pointer;
+  color: var(--rp-ui-kit-color-text-3);
+
+  &.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &:hover:not(:active) {
+    background: var(--rp-ui-kit-color-bg-3);
+  }
+
+  &.selected {
+    color: var(--rp-ui-kit-color-primary-text);
+  }
+
+  &.hover:not(.disabled) {
+    padding: 8px 11px 6px;
+    background-color: var(--rp-ui-kit-color-bg-3);
+    border: 1px solid var(--rp-ui-kit-color-primary-focused);
+  }
+
+  &.hover:not(.disabled):hover {
+    &:hover:not(:active) {
+      background: var(--rp-ui-kit-color-bg-3);
+    }
+    border: none;
+    padding: 9px 12px 7px;
+  }
+}
+
+.single-option {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.sub-option {
+  padding-left: 24px;
+}

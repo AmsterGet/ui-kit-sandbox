@@ -27,6 +27,14 @@
   --rp-ui-kit-e-300: #a2aab5;
   --rp-ui-kit-e-400: #8d95a1;
 
+  --rp-ui-kit-dark-bg: #101010;
+  --rp-ui-kit-dark-bg-solid-98: #141414;
+
+  --rp-ui-kit-dark-error: #ff4040; // --rp-ui-kit-darkmode-error-default
+  --rp-ui-kit-dark-error-text: #ff6666;
+  --rp-ui-kit-dark-log-error: #ff3222;
+  --rp-ui-kit-dark-log-fatal: #c2352b;
+
   --rp-ui-kit-dark-topaz-main: #1a9cb0; // --rp-ui-kit-color-primary
   --rp-ui-kit-dark-topaz-hover: #1cb0c7; // --rp-ui-kit-color-primary-hover
   --rp-ui-kit-dark-topaz-focused: #1dbdd6; // --rp-ui-kit-color-primary-focused
@@ -52,16 +60,7 @@
   --rp-ui-kit-sm-info-line-100: #ced3db;
 
   --rp-ui-kit-defect-type-AB: #ffc208;
-  --rp-ui-kit-darkmode-bg: #101010;
-  --rp-ui-kit-darkmode-bg-solid-98: #141414;
 
-  --rp-ui-kit-darkmode-error-default: #ff4040;
-  --rp-ui-kit-darkmode-error-text: #ff6666;
-  --rp-ui-kit-darkmode-fatal: #c2352b;
-  --rp-ui-kit-darkmode-error: #ff3222;
-
-  // --rp-ui-kit-item-shadow: rgba(#374362, 0.1); // TODO: Recheck
-  // --rp-ui-kit-item-shadow-hover: rgba(#374362, 0.2); // TODO: Recheck
   --rp-ui-kit-tag-value-text: #394db6;
   --rp-ui-kit-tag-value-background: #ced8fc;
   --rp-ui-kit-tag-key-text: #6f4599;

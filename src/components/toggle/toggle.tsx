@@ -1,33 +1,34 @@
 import classNames from 'classnames/bind';
 import {
+  ChangeEventHandler,
   FC,
+  HTMLAttributes,
+  KeyboardEventHandler,
   ReactElement,
   ReactNode,
   useRef,
-  KeyboardEventHandler,
-  ChangeEventHandler,
-  HTMLAttributes,
 } from 'react';
 import { KeyCodes } from '@common/constants/keyCodes';
-import styles from './checkbox.module.scss';
+import styles from './toggle.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface CheckboxProps extends HTMLAttributes<HTMLInputElement> {
+interface ToggleProps extends HTMLAttributes<HTMLInputElement> {
   value: boolean;
+  title?: string;
   children?: ReactNode;
   disabled?: boolean;
   className?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
-// DS link - https://www.figma.com/file/gjYQPbeyf4YsH3wZiVKoaj/%F0%9F%9B%A0-RP-DS-6?type=design&node-id=2350-8764&mode=design&t=GAXsAg9jOEgkVVlq-0
-export const Checkbox: FC<CheckboxProps> = ({
+export const Toggle: FC<ToggleProps> = ({
   children,
-  disabled = false,
+  value,
   onChange,
   className,
-  value,
+  disabled = false,
+  title,
   ...rest
 }): ReactElement => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -49,31 +50,28 @@ export const Checkbox: FC<CheckboxProps> = ({
 
   return (
     <label
-      id="rp-ui-kit-checkbox-label"
-      className={cx('checkbox', className, {
-        disabled,
-      })}
+      id="rp-ui-kit-toggle-label"
+      title={title}
+      className={cx('toggle', className, { disabled })}
     >
       <input
         ref={inputRef}
-        tabIndex={0}
-        type="checkbox"
-        onKeyDown={handleKeyDown}
-        className={cx('input')}
-        disabled={disabled}
+        tabIndex={disabled ? -1 : 0}
         onChange={onChange}
         checked={value}
+        disabled={disabled}
+        onKeyDown={handleKeyDown}
+        className={cx('input')}
+        type="checkbox"
         {...rest}
       />
-      <span
-        aria-labelledby="rp-ui-kit-checkbox-label"
+      <div
+        aria-labelledby="rp-ui-kit-toggle-label"
         role="checkbox"
         aria-checked={value}
-        className={cx('control', {
-          disabled,
-        })}
+        className={cx('slider', 'round')}
       />
-      {children && <span className={cx('children', { disabled })}>{children}</span>}
+      {children && <span className={cx('children-container')}>{children}</span>}
     </label>
   );
 };
