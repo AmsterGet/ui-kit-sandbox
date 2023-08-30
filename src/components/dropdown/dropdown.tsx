@@ -15,6 +15,7 @@ import styles from './dropdown.module.scss';
 const cx = classNames.bind(styles);
 
 interface DropdownProps {
+  // TODO: make value and options optional
   options: DropdownOptionType[];
   value: DropdownValue;
   disabled?: boolean;
@@ -95,7 +96,6 @@ export const Dropdown: FC<DropdownProps> = ({
   } = useSelect<DropdownOptionType>({
     items: options,
     itemToString: (item): string => (item?.label ? String(item.label) : placeholder) || '',
-    // onChange: handleChange,
     selectedItem: getSelectedOption(),
     isOpen: isOpened,
     circularNavigation: true,
