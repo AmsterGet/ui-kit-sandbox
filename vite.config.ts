@@ -30,6 +30,7 @@ export default defineConfig(() => ({
         modal: resolve('src', 'components', 'modal'),
         dropdown: resolve('src', 'components', 'dropdown'),
         toggle: resolve('src', 'components', 'toggle'),
+        icon: resolve('src', 'components', 'icon'),
       },
       name: 'ui-kit',
       formats: ['es'],

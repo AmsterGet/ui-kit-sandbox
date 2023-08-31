@@ -30,15 +30,8 @@ $Z-INDEX-POPUP: 10;
 
 .arrow {
   display: inline-flex;
-  width: 13px;
-  height: 7px;
   margin-left: 12px;
   transition: transform 200ms linear;
-
-  svg {
-    height: 7px;
-    width: 13px;
-  }
 }
 
 .dropdown {
