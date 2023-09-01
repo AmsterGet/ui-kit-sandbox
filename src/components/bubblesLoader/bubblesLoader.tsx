@@ -1,21 +1,21 @@
 import { FC, ReactElement } from 'react';
 import classNames from 'classnames/bind';
-import styles from './bubblesPreloader.module.scss';
+import styles from './bubblesLoader.module.scss';
 
 const cx = classNames.bind(styles);
 
 const BUBBLES_COUNT = 7;
 
-interface BubblesPreloaderProps {
+interface BubblesLoaderProps {
   color?: string;
   className?: string;
 }
 
-export const BubblesPreloader: FC<BubblesPreloaderProps> = ({
+export const BubblesLoader: FC<BubblesLoaderProps> = ({
   color = 'topaz',
   className,
 }): ReactElement => (
-  <div className={cx('bubbles-preloader', className, { [`color-${color}`]: color })}>
+  <div className={cx('bubbles-loader', className, { [`color-${color}`]: color })}>
     {Array(BUBBLES_COUNT)
       .fill(undefined)
       .map((_, index) => (
