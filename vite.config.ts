@@ -6,7 +6,7 @@ import svgr from 'vite-plugin-svgr';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import * as packageJson from './package.json';
 
-// TODO: build styles for components individually
+// TODO: build styles for components individually and add multiple entry points to package.json file
 export default defineConfig(() => ({
   plugins: [react(), svgr(), tsConfigPaths(), dts()],
   resolve: {

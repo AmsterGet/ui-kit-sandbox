@@ -23,7 +23,7 @@ interface FieldNumberProps extends Omit<HTMLAttributes<HTMLInputElement>, 'onCha
   onChange: (value: number | string) => void;
   value?: FieldNumberValue;
   placeholder?: string;
-  disabled: boolean;
+  disabled?: boolean;
   label?: string;
   postfix?: string;
   min?: number;

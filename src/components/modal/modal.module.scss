@@ -29,12 +29,12 @@ $Z-INDEX-OVERLAY: 2;
 
 .overlay-default {
   background-color: var(--rp-ui-kit-overlay);
-  z-index: $Z_INDEX-OVERLAY;
+  z-index: $Z-INDEX-OVERLAY;
 }
 
 .overlay-light-cyan {
   background-color: var(--rp-ui-kit-overlay-light-cyan);
-  z-index: $Z_INDEX-OVERLAY;
+  z-index: $Z-INDEX-OVERLAY;
 }
 
 .scrolling-content {
