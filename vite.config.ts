@@ -31,6 +31,7 @@ export default defineConfig(() => ({
         dropdown: resolve('src', 'components', 'dropdown'),
         toggle: resolve('src', 'components', 'toggle'),
         icon: resolve('src', 'components', 'icon'),
+        fieldNumber: resolve('src', 'components', 'fieldNumber'),
       },
       name: 'ui-kit',
       formats: ['es'],

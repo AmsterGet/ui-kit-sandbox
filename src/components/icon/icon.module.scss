@@ -3,8 +3,9 @@
     fill: var(--rp-ui-kit-e-300);
   }
 
-  .disabled {
+  &.disabled {
     opacity: 40%;
+    cursor: default;
   }
 
   &:hover:not(.disabled) {
