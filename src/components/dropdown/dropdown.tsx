@@ -5,7 +5,7 @@ import { useSelect } from 'downshift';
 import { Scrollbars } from 'rc-scrollbars';
 import { useOnClickOutside } from '@common/hooks';
 import { KeyCodes } from '@common/constants/keyCodes';
-import { ReactComponent as ArrowIcon } from '@assets/icons/arrow.svg';
+import { Icon } from '@components/icon';
 import { DropdownOption } from './dropdownOption';
 import { DropdownVariant, RenderDropdownOption, DropdownOptionType, DropdownValue } from './types';
 import { OPEN_DROPDOWN_KEY_CODES, CLOSE_DROPDOWN_KEY_CODES } from './constants';
@@ -225,7 +225,7 @@ export const Dropdown: FC<DropdownProps> = ({
             >
               {icon && <span className={cx('icon')}>{icon}</span>}
               <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
-              <span className={cx('arrow')}>{<ArrowIcon />}</span>
+              <Icon icon="dropdown" className={cx('arrow')} />
             </button>
           )}
         </Reference>

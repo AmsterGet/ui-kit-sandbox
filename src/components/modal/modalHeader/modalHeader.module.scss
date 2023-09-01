@@ -31,21 +31,6 @@
   position: absolute;
   top: 6px;
   right: 0;
-  display: block;
-  width: 16px;
-  height: 16px;
   line-height: normal;
   cursor: pointer;
-
-  &:hover {
-    svg {
-      fill: var(--rp-ui-kit-e-400);
-    }
-  }
-
-  &:active {
-    svg {
-      fill: var(--rp-ui-kit-color-primary-pressed);
-    }
-  }
 }

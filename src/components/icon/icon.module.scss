@@ -1,0 +1,26 @@
+.icon {
+  svg path {
+    fill: var(--rp-ui-kit-e-300);
+  }
+
+  &.disabled {
+    opacity: 40%;
+    cursor: default;
+  }
+
+  &:hover:not(.disabled) {
+    svg path {
+      fill: var(--rp-ui-kit-e-400);
+    }
+  }
+  &:active:not(.disabled) {
+    svg path {
+      fill: var(--rp-ui-kit-topaz-pressed);
+    }
+  }
+  &:focus:not(.disabled, :active) {
+    svg path {
+      fill: var(--rp-ui-kit-topaz-focused);
+    }
+  }
+}
