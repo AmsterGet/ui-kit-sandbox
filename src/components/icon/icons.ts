@@ -5,6 +5,7 @@ import { ReactComponent as Delete } from '@assets/icons/delete.svg';
 import { ReactComponent as PlusIcon } from '@assets/icons/plus.svg';
 import { ReactComponent as MinusIcon } from '@assets/icons/minus.svg';
 
+// TODO: Split to multiple icon components
 export const icons = {
   clear: Clear,
   close: Close,

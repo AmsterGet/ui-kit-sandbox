@@ -31,6 +31,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
+// TODO: Fix issue with modal positioning
 export const Modal: FC<ModalProps> = ({
   title,
   headerNode,
