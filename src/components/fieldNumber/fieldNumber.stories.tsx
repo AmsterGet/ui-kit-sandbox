@@ -9,14 +9,6 @@ const meta: Meta<typeof FieldNumber> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-};
-
-export default meta;
-
-type Story = StoryObj<typeof FieldNumber>;
-
-export const Default: Story = {
-  args: {},
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [value, setValue] = useState<string | number>('0');
@@ -31,8 +23,22 @@ export const Default: Story = {
   },
 };
 
+export default meta;
+
+type Story = StoryObj<typeof FieldNumber>;
+
+export const Default: Story = {
+  args: {},
+};
+
 export const Disabled: Story = {
   args: {
     disabled: true,
+  },
+};
+
+export const WithLabel: Story = {
+  args: {
+    label: 'Enter you number',
   },
 };

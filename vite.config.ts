@@ -32,6 +32,7 @@ export default defineConfig(() => ({
         toggle: resolve('src', 'components', 'toggle'),
         icon: resolve('src', 'components', 'icon'),
         fieldNumber: resolve('src', 'components', 'fieldNumber'),
+        bubblesPreloader: resolve('src', 'components', 'bubblesPreloader'),
       },
       name: 'ui-kit',
       formats: ['es'],

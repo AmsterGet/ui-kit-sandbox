@@ -8,3 +8,4 @@ export { Dropdown } from './dropdown';
 export { Toggle } from './toggle';
 export { Icon } from './icon';
 export { FieldNumber } from './fieldNumber';
+export { BubblesPreloader } from './bubblesPreloader';
