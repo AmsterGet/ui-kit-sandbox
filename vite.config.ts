@@ -8,7 +8,14 @@ import * as packageJson from './package.json';
 
 // TODO: build styles for components individually and add multiple entry points to package.json file
 export default defineConfig(() => ({
-  plugins: [react(), svgr(), tsConfigPaths(), dts()],
+  plugins: [
+    react(),
+    svgr({
+      exportAsDefault: true,
+    }),
+    tsConfigPaths(),
+    dts(),
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -30,7 +37,7 @@ export default defineConfig(() => ({
         modal: resolve('src', 'components', 'modal'),
         dropdown: resolve('src', 'components', 'dropdown'),
         toggle: resolve('src', 'components', 'toggle'),
-        icon: resolve('src', 'components', 'icon'),
+        baseIconButton: resolve('src', 'components', 'icons', 'baseIconButton'),
         fieldNumber: resolve('src', 'components', 'fieldNumber'),
         bubblesLoader: resolve('src', 'components', 'bubblesLoader'),
       },
