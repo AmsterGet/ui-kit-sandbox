@@ -25,7 +25,6 @@ interface DropdownProps {
   icon?: ReactNode;
   variant?: DropdownVariant;
   placeholder?: string;
-  defaultWidth?: boolean;
   transparentBackground?: boolean;
   className?: string;
   toggleButtonClassName?: string;
@@ -51,7 +50,6 @@ export const Dropdown: FC<DropdownProps> = ({
   icon,
   variant,
   placeholder = '',
-  defaultWidth = true,
   renderOption,
   transparentBackground = false,
   className,
@@ -190,11 +188,7 @@ export const Dropdown: FC<DropdownProps> = ({
     ));
 
   return (
-    <div
-      ref={containerRef}
-      className={cx('container', { 'default-width': defaultWidth }, className)}
-      title={title}
-    >
+    <div ref={containerRef} className={cx('container', className)} title={title}>
       <button
         {...getToggleButtonProps({
           tabIndex: disabled ? -1 : 0,
