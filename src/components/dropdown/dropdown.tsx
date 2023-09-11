@@ -1,6 +1,5 @@
 import { useRef, useState, ReactNode, FC, ReactElement, KeyboardEventHandler } from 'react';
 import classNames from 'classnames/bind';
-import { Manager, Reference, Popper } from 'react-popper';
 import { useSelect } from 'downshift';
 import { Scrollbars } from 'rc-scrollbars';
 import { useOnClickOutside } from '@common/hooks';
@@ -60,8 +59,6 @@ export const Dropdown: FC<DropdownProps> = ({
 }): ReactElement => {
   const [isOpened, setOpened] = useState(false);
   const containerRef = useRef(null);
-  // allow setting updater with unknown type as react-popper doesn't expose the necessary one
-  const schedulePopperUpdate = useRef<(() => Promise<unknown>) | null>(null);
 
   const handleClickOutside = () => {
     if (isOpened) {
@@ -118,9 +115,6 @@ export const Dropdown: FC<DropdownProps> = ({
 
   const onClickDropdown = () => {
     if (!disabled) {
-      if (schedulePopperUpdate?.current) {
-        schedulePopperUpdate.current();
-      }
       setOpened((prevState) => !prevState);
       if (isOpened) {
         if (onBlur) {
@@ -150,9 +144,6 @@ export const Dropdown: FC<DropdownProps> = ({
     if (OPEN_DROPDOWN_KEY_CODES.includes(keyCode) && !isOpened) {
       event.preventDefault();
       setHighlightedIndex(defaultHighlightedIndex);
-      if (schedulePopperUpdate?.current) {
-        schedulePopperUpdate.current();
-      }
       setOpened(true);
       if (onFocus) {
         onFocus();
@@ -199,55 +190,40 @@ export const Dropdown: FC<DropdownProps> = ({
     ));
 
   return (
-    <Manager>
-      <div
-        ref={containerRef}
-        className={cx('container', { 'default-width': defaultWidth }, className)}
-        title={title}
+    <div
+      ref={containerRef}
+      className={cx('container', { 'default-width': defaultWidth }, className)}
+      title={title}
+    >
+      <button
+        {...getToggleButtonProps({
+          tabIndex: disabled ? -1 : 0,
+          className: cx('dropdown', variant, toggleButtonClassName, {
+            'transparent-background': transparentBackground,
+            opened: isOpened,
+            disabled,
+            error,
+            touched,
+            'mobile-disabled': mobileDisabled,
+          }),
+          onClick: onClickDropdown,
+          onKeyDown: handleToggleButtonKeyDown,
+        })}
       >
-        <Reference>
-          {({ ref }) => (
-            <button
-              {...getToggleButtonProps({
-                ref,
-                tabIndex: disabled ? -1 : 0,
-                className: cx('dropdown', variant, toggleButtonClassName, {
-                  'transparent-background': transparentBackground,
-                  opened: isOpened,
-                  disabled,
-                  error,
-                  touched,
-                  'mobile-disabled': mobileDisabled,
-                }),
-                onClick: onClickDropdown,
-                onKeyDown: handleToggleButtonKeyDown,
-              })}
-            >
-              {icon && <span className={cx('icon')}>{icon}</span>}
-              <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
-              <BaseIconButton className={cx('arrow')}>
-                <DropdownIcon />
-              </BaseIconButton>
-            </button>
-          )}
-        </Reference>
-        <Popper placement="bottom-start">
-          {({ ref, style, update }) => {
-            schedulePopperUpdate.current = update;
-            return (
-              <div
-                className={cx('select-list', { opened: isOpened })}
-                style={style}
-                {...getMenuProps({ ref, onKeyDown: handleKeyDownMenu })}
-              >
-                <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
-                  {renderOptions()}
-                </Scrollbars>
-              </div>
-            );
-          }}
-        </Popper>
+        {icon && <span className={cx('icon')}>{icon}</span>}
+        <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
+        <BaseIconButton className={cx('arrow')}>
+          <DropdownIcon />
+        </BaseIconButton>
+      </button>
+      <div
+        className={cx('select-list', { opened: isOpened })}
+        {...getMenuProps({ onKeyDown: handleKeyDownMenu })}
+      >
+        <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
+          {renderOptions()}
+        </Scrollbars>
       </div>
-    </Manager>
+    </div>
   );
 };
