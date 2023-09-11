@@ -50,8 +50,9 @@ export const OverlayLightCyan: Story = {
   },
 };
 
-export const WithBigContent: Story = {
+export const Scrollable: Story = {
   args: {
+    scrollable: true,
     children: (
       <>
         <p>
