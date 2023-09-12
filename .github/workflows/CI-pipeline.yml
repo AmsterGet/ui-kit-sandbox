@@ -1,0 +1,30 @@
+name: CI-pipeline
+
+on:
+  push:
+    branches:
+      - develop
+      - '!main'
+    paths-ignore:
+      - README.md
+      - CHANGELOG.md
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install of node dependencies
+        run: npm install
+      - name: Build the source code
+        run: npm run build
+      - name: Run lint
+        run: npm run lint
+      - name: Run tests and check coverage
+        run: npm run test:coverage
