@@ -55,15 +55,13 @@ export const Dropdown: FC<DropdownProps> = ({
   className,
   toggleButtonClassName,
 }): ReactElement => {
-  const [isOpened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(false);
   const containerRef = useRef(null);
 
   const handleClickOutside = () => {
-    if (isOpened) {
+    if (opened) {
       setOpened(false);
-      if (onBlur) {
-        onBlur();
-      }
+      onBlur?.();
     }
   };
   useOnClickOutside(containerRef, handleClickOutside);
@@ -92,7 +90,7 @@ export const Dropdown: FC<DropdownProps> = ({
     items: options,
     itemToString: (item): string => (item?.label ? String(item.label) : placeholder) || '',
     selectedItem: getSelectedOption(),
-    isOpen: isOpened,
+    isOpen: opened,
     circularNavigation: true,
     defaultHighlightedIndex,
     onHighlightedIndexChange: (changes) => {
@@ -111,17 +109,13 @@ export const Dropdown: FC<DropdownProps> = ({
     },
   });
 
-  const onClickDropdown = () => {
+  const onDropdownClick = () => {
     if (!disabled) {
       setOpened((prevState) => !prevState);
-      if (isOpened) {
-        if (onBlur) {
-          onBlur();
-        }
+      if (opened) {
+        onBlur?.();
       } else {
-        if (onFocus) {
-          onFocus();
-        }
+        onFocus?.();
       }
     }
   };
@@ -139,13 +133,11 @@ export const Dropdown: FC<DropdownProps> = ({
 
   const handleToggleButtonKeyDown: KeyboardEventHandler<HTMLButtonElement> = (event) => {
     const { keyCode } = event;
-    if (OPEN_DROPDOWN_KEY_CODES.includes(keyCode) && !isOpened) {
+    if (OPEN_DROPDOWN_KEY_CODES.includes(keyCode) && !opened) {
       event.preventDefault();
       setHighlightedIndex(defaultHighlightedIndex);
       setOpened(true);
-      if (onFocus) {
-        onFocus();
-      }
+      onFocus?.();
     }
   };
 
@@ -155,18 +147,14 @@ export const Dropdown: FC<DropdownProps> = ({
       const option = options[highlightedIndex];
       handleChange(option);
       setOpened(false);
-      if (onBlur) {
-        onBlur();
-      }
+      onBlur?.();
       return;
     }
 
     if (CLOSE_DROPDOWN_KEY_CODES.includes(keyCode)) {
       event.stopPropagation();
       setOpened(false);
-      if (onBlur) {
-        onBlur();
-      }
+      onBlur?.();
     }
   };
 
@@ -190,28 +178,28 @@ export const Dropdown: FC<DropdownProps> = ({
   return (
     <div ref={containerRef} className={cx('container', className)} title={title}>
       <button
+        disabled={disabled}
         {...getToggleButtonProps({
-          tabIndex: disabled ? -1 : 0,
           className: cx('dropdown', variant, toggleButtonClassName, {
             'transparent-background': transparentBackground,
-            opened: isOpened,
+            opened,
             disabled,
             error,
             touched,
             'mobile-disabled': mobileDisabled,
           }),
-          onClick: onClickDropdown,
+          onClick: onDropdownClick,
           onKeyDown: handleToggleButtonKeyDown,
         })}
       >
         {icon && <span className={cx('icon')}>{icon}</span>}
         <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
-        <BaseIconButton className={cx('arrow')}>
+        <BaseIconButton className={cx('arrow')} tabIndex={-1}>
           <DropdownIcon />
         </BaseIconButton>
       </button>
       <div
-        className={cx('select-list', { opened: isOpened })}
+        className={cx('select-list', { opened })}
         {...getMenuProps({ onKeyDown: handleKeyDownMenu })}
       >
         <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
