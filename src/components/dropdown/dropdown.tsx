@@ -1,6 +1,5 @@
 import { useRef, useState, ReactNode, FC, ReactElement, KeyboardEventHandler } from 'react';
 import classNames from 'classnames/bind';
-import { Manager, Reference, Popper } from 'react-popper';
 import { useSelect } from 'downshift';
 import { Scrollbars } from 'rc-scrollbars';
 import { useOnClickOutside } from '@common/hooks';
@@ -26,7 +25,6 @@ interface DropdownProps {
   icon?: ReactNode;
   variant?: DropdownVariant;
   placeholder?: string;
-  defaultWidth?: boolean;
   transparentBackground?: boolean;
   className?: string;
   toggleButtonClassName?: string;
@@ -52,23 +50,18 @@ export const Dropdown: FC<DropdownProps> = ({
   icon,
   variant,
   placeholder = '',
-  defaultWidth = true,
   renderOption,
   transparentBackground = false,
   className,
   toggleButtonClassName,
 }): ReactElement => {
-  const [isOpened, setOpened] = useState(false);
+  const [opened, setOpened] = useState(false);
   const containerRef = useRef(null);
-  // allow setting updater with unknown type as react-popper doesn't expose the necessary one
-  const schedulePopperUpdate = useRef<(() => Promise<unknown>) | null>(null);
 
   const handleClickOutside = () => {
-    if (isOpened) {
+    if (opened) {
       setOpened(false);
-      if (onBlur) {
-        onBlur();
-      }
+      onBlur?.();
     }
   };
   useOnClickOutside(containerRef, handleClickOutside);
@@ -97,7 +90,7 @@ export const Dropdown: FC<DropdownProps> = ({
     items: options,
     itemToString: (item): string => (item?.label ? String(item.label) : placeholder) || '',
     selectedItem: getSelectedOption(),
-    isOpen: isOpened,
+    isOpen: opened,
     circularNavigation: true,
     defaultHighlightedIndex,
     onHighlightedIndexChange: (changes) => {
@@ -116,20 +109,13 @@ export const Dropdown: FC<DropdownProps> = ({
     },
   });
 
-  const onClickDropdown = () => {
+  const onDropdownClick = () => {
     if (!disabled) {
-      if (schedulePopperUpdate?.current) {
-        schedulePopperUpdate.current();
-      }
       setOpened((prevState) => !prevState);
-      if (isOpened) {
-        if (onBlur) {
-          onBlur();
-        }
+      if (opened) {
+        onBlur?.();
       } else {
-        if (onFocus) {
-          onFocus();
-        }
+        onFocus?.();
       }
     }
   };
@@ -147,16 +133,11 @@ export const Dropdown: FC<DropdownProps> = ({
 
   const handleToggleButtonKeyDown: KeyboardEventHandler<HTMLButtonElement> = (event) => {
     const { keyCode } = event;
-    if (OPEN_DROPDOWN_KEY_CODES.includes(keyCode) && !isOpened) {
+    if (OPEN_DROPDOWN_KEY_CODES.includes(keyCode) && !opened) {
       event.preventDefault();
       setHighlightedIndex(defaultHighlightedIndex);
-      if (schedulePopperUpdate?.current) {
-        schedulePopperUpdate.current();
-      }
       setOpened(true);
-      if (onFocus) {
-        onFocus();
-      }
+      onFocus?.();
     }
   };
 
@@ -166,18 +147,14 @@ export const Dropdown: FC<DropdownProps> = ({
       const option = options[highlightedIndex];
       handleChange(option);
       setOpened(false);
-      if (onBlur) {
-        onBlur();
-      }
+      onBlur?.();
       return;
     }
 
     if (CLOSE_DROPDOWN_KEY_CODES.includes(keyCode)) {
       event.stopPropagation();
       setOpened(false);
-      if (onBlur) {
-        onBlur();
-      }
+      onBlur?.();
     }
   };
 
@@ -199,55 +176,36 @@ export const Dropdown: FC<DropdownProps> = ({
     ));
 
   return (
-    <Manager>
-      <div
-        ref={containerRef}
-        className={cx('container', { 'default-width': defaultWidth }, className)}
-        title={title}
+    <div ref={containerRef} className={cx('container', className)} title={title}>
+      <button
+        disabled={disabled}
+        {...getToggleButtonProps({
+          className: cx('dropdown', variant, toggleButtonClassName, {
+            'transparent-background': transparentBackground,
+            opened,
+            disabled,
+            error,
+            touched,
+            'mobile-disabled': mobileDisabled,
+          }),
+          onClick: onDropdownClick,
+          onKeyDown: handleToggleButtonKeyDown,
+        })}
       >
-        <Reference>
-          {({ ref }) => (
-            <button
-              {...getToggleButtonProps({
-                ref,
-                tabIndex: disabled ? -1 : 0,
-                className: cx('dropdown', variant, toggleButtonClassName, {
-                  'transparent-background': transparentBackground,
-                  opened: isOpened,
-                  disabled,
-                  error,
-                  touched,
-                  'mobile-disabled': mobileDisabled,
-                }),
-                onClick: onClickDropdown,
-                onKeyDown: handleToggleButtonKeyDown,
-              })}
-            >
-              {icon && <span className={cx('icon')}>{icon}</span>}
-              <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
-              <BaseIconButton className={cx('arrow')}>
-                <DropdownIcon />
-              </BaseIconButton>
-            </button>
-          )}
-        </Reference>
-        <Popper placement="bottom-start">
-          {({ ref, style, update }) => {
-            schedulePopperUpdate.current = update;
-            return (
-              <div
-                className={cx('select-list', { opened: isOpened })}
-                style={style}
-                {...getMenuProps({ ref, onKeyDown: handleKeyDownMenu })}
-              >
-                <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
-                  {renderOptions()}
-                </Scrollbars>
-              </div>
-            );
-          }}
-        </Popper>
+        {icon && <span className={cx('icon')}>{icon}</span>}
+        <span className={cx('value', { placeholder: !value })}>{getDisplayedValue()}</span>
+        <BaseIconButton className={cx('arrow')} tabIndex={-1}>
+          <DropdownIcon />
+        </BaseIconButton>
+      </button>
+      <div
+        className={cx('select-list', { opened })}
+        {...getMenuProps({ onKeyDown: handleKeyDownMenu })}
+      >
+        <Scrollbars autoHeight autoHeightMax={216} hideTracksWhenNotNeeded>
+          {renderOptions()}
+        </Scrollbars>
       </div>
-    </Manager>
+    </div>
   );
 };

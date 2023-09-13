@@ -18,6 +18,7 @@ const MODAL_HEADER_AND_FOOTER_HEIGHT = 176;
 type ModalOverlay = 'default' | 'light-cyan';
 
 interface ModalProps {
+  onClose: () => void;
   title?: ReactNode;
   headerNode?: ReactNode;
   children?: ReactNode;
@@ -28,7 +29,7 @@ interface ModalProps {
   allowCloseOutside?: boolean;
   okButton?: ButtonProps;
   cancelButton?: ButtonProps;
-  onClose: () => void;
+  scrollable?: boolean;
 }
 
 // TODO: Fix issue with modal positioning
@@ -44,6 +45,7 @@ export const Modal: FC<ModalProps> = ({
   onClose = () => {},
   overlay = 'default',
   allowCloseOutside = true,
+  scrollable = false,
 }) => {
   const [isShown, setShown] = useState(false);
   const [modalHeight, setModalHeight] = useState(0);
@@ -103,9 +105,13 @@ export const Modal: FC<ModalProps> = ({
             transition={{ duration: 0.3 }}
           >
             <ModalHeader title={title} headerNode={headerNode} onClose={closeModal} />
-            <Scrollbars autoHeight autoHeightMax={contentMaxHeight} hideTracksWhenNotNeeded>
+            {scrollable ? (
+              <Scrollbars autoHeight autoHeightMax={contentMaxHeight} hideTracksWhenNotNeeded>
+                <ModalContent>{children}</ModalContent>
+              </Scrollbars>
+            ) : (
               <ModalContent>{children}</ModalContent>
-            </Scrollbars>
+            )}
             <ModalFooter
               size={size}
               footerNode={footerNode}
