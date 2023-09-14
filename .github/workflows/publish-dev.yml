@@ -46,6 +46,6 @@ jobs:
 
       - name: Push version update back to repository
         run: |
-          git push origin HEAD:${{ github.ref }}
+          git push origin HEAD:${{ github.ref }} --tags
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
