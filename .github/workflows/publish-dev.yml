@@ -27,11 +27,10 @@ jobs:
         run: npm run build
 
       - name: Setup git credentials
-        uses: oleksiyrudenko/gha-git-credentials@v2.1.1
-        with:
-          name: 'reportportal.io'
-          email: 'support@reportportal.io'
-          token: ${{ secrets.GH_TOKEN }}
+          run: |
+            git config --global user.email "support@reportportal.io"
+            git config --global user.name "reportportal.io"
+            git remote set-url origin https://${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}
 
       - name: Bump version - prerelease
         run: npm version prerelease --preid=alpha
