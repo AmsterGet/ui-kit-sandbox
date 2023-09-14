@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  alpha_release:
+  publish_dev:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +26,13 @@ jobs:
       - name: Build library
         run: npm run build
 
+      - name: Setup git credentials
+        uses: oleksiyrudenko/gha-git-credentials@v2.1.1
+        with:
+          name: 'reportportal.io'
+          email: 'support@reportportal.io'
+          token: ${{ secrets.GH_TOKEN }}
+
       - name: Bump version - prerelease
         run: npm version prerelease --preid=alpha
         id: version_bump
@@ -36,13 +43,6 @@ jobs:
         run: npm publish --access public --tag alpha
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-
-      - name: Setup git credentials
-        uses: oleksiyrudenko/gha-git-credentials@v2.1.1
-        with:
-          name: 'reportportal.io'
-          email: 'support@reportportal.io'
-          token: ${{ secrets.GH_TOKEN }}
 
       - name: Push version update back to repository
         run: |
