@@ -34,9 +34,6 @@ jobs:
 
       - name: Bump version - prerelease
         run: npm version prerelease --preid=alpha
-        id: version_bump
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish to NPM
         run: |
@@ -49,5 +46,3 @@ jobs:
       - name: Push version update back to repository
         run: |
           git push origin HEAD:${{ github.ref }} --tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
