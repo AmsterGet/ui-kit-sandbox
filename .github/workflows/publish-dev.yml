@@ -1,0 +1,51 @@
+name: Publish dev package version
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  alpha_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build library
+        run: npm run build
+
+      - name: Bump version - prerelease
+        run: npm version prerelease --preid=alpha
+        id: version_bump
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Publish to NPM
+        run: npm publish --access public --tag alpha
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: Setup git credentials
+        uses: oleksiyrudenko/gha-git-credentials@v2.1.1
+        with:
+          name: 'reportportal.io'
+          email: 'support@reportportal.io'
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Push version update back to repository
+        run: |
+          git push origin HEAD:${{ github.ref }} --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
