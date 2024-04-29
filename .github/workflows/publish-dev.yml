@@ -1,9 +1,9 @@
 name: Publish dev package version
 
 on:
-  push:
-    branches:
-      - develop
+#  push:
+#    branches:
+#      - develop
   workflow_dispatch:
 
 jobs:
