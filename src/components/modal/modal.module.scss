@@ -2,8 +2,6 @@ $WIDTH-SMALL: 320px;
 $WIDTH-DEFAULT: 480px;
 $WIDTH-LARGE: 720px;
 
-$Z-INDEX-OVERLAY: 2;
-
 // TODO: Discuss with UX team. There are no designs for the dark theme, so the theme-independent CSS properties are used
 
 @mixin modalWidth($width) {
@@ -28,20 +26,17 @@ $Z-INDEX-OVERLAY: 2;
 }
 
 .overlay-default {
-  background-color: var(--rp-ui-kit-overlay);
-  z-index: $Z-INDEX-OVERLAY;
+  background-color: var(--rp-ui-base-overlay);
 }
 
 .overlay-light-cyan {
-  background-color: var(--rp-ui-kit-overlay-light-cyan);
-  z-index: $Z-INDEX-OVERLAY;
+  background-color: var(--rp-ui-base-overlay-light-cyan);
 }
 
 .scrolling-content {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: $Z-INDEX-OVERLAY;
 }
 
 .modal-window {
@@ -52,10 +47,10 @@ $Z-INDEX-OVERLAY: 2;
   margin-bottom: 10px;
   padding: 32px 48px;
   box-sizing: border-box;
-  background-color: var(--rp-ui-kit-bg-100);
+  background-color: var(--rp-ui-base-bg-100);
   text-align: left;
   border-radius: 16px;
-  box-shadow: var(--rp-ui-kit-shadow-secondary);
+  box-shadow: var(--rp-ui-base-shadow-secondary);
   opacity: 1;
   outline: none;
   max-height: 90%;

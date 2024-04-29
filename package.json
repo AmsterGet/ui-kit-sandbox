@@ -3,7 +3,7 @@
   "version": "0.0.1-alpha.11",
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006",
+    "start": "storybook dev -p 6006",
     "build": "tsc && vite build",
     "build:storybook": "storybook build",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -23,6 +23,7 @@
     "react-dom": "17.x-18.x"
   },
   "dependencies": {
+    "@floating-ui/react-dom": "^2.0.1",
     "classnames": "^2.3.2",
     "downshift": "^6.1.12",
     "framer-motion": "^10.15.2",
@@ -65,5 +66,26 @@
     "vite-plugin-dts": "^3.4.0",
     "vite-plugin-svgr": "^3.2.0",
     "vite-tsconfig-paths": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reportportal/ui-kit.git"
+  },
+  "author": "ReportPortal.io",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/reportportal/ui-kit/issues"
+  },
+  "homepage": "https://github.com/reportportal/ui-kit#readme",
+  "keywords": [
+    "react",
+    "react-components",
+    "design-systems",
+    "ui-kit",
+    "reportportal",
+    "epam"
+  ],
+  "engines": {
+    "node": ">=16.x"
   }
 }
